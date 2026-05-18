@@ -1,0 +1,34 @@
+name: Fetch SWIFT & Payments News
+
+on:
+  schedule:
+    - cron: '0 6 * * *'   # 06:00 UTC daily
+  workflow_dispatch:        # also runnable manually
+
+permissions:
+  contents: write
+
+jobs:
+  fetch-news:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install requests feedparser python-dateutil
+
+      - name: Fetch & filter news
+        run: python3 .github/scripts/fetch_swift_news.py
+
+      - name: Commit updated news
+        run: |
+          git config user.name  "NXD News Bot"
+          git config user.email "news-bot@nxdenterprise.com"
+          git add swift-news.json
+          git diff --cached --quiet || git commit -m "🗞 Auto-update: SWIFT & payments news [$(date -u +'%Y-%m-%d')]"
+          git push

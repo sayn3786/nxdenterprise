@@ -1,0 +1,96 @@
+{
+  "updated": "18 May 2026, 06:00 UTC",
+  "count": 9,
+  "articles": [
+    {
+      "title": "SWIFT completes MT to ISO 20022 coexistence period — full MX migration now mandatory",
+      "summary": "SWIFT has confirmed the end of the MT/MX coexistence window. Financial institutions processing cross-border payments must now send and receive ISO 20022 MX messages natively. Banks still running legacy MT messages face rejection risk from correspondent banks.",
+      "link": "https://www.swift.com/standards/iso-20022",
+      "source": "SWIFT",
+      "color": "#0d2145",
+      "tag": "ISO 20022",
+      "published": "2026-05-10T08:00:00Z",
+      "display_date": "10 May 2026"
+    },
+    {
+      "title": "BIS quarterly review: Cross-border payment frictions persist despite ISO 20022 adoption surge",
+      "summary": "The Bank for International Settlements notes significant progress in ISO 20022 adoption globally, but highlights data truncation and field mapping inconsistencies across jurisdictions continue to create compliance friction for correspondent banks.",
+      "link": "https://www.bis.org/publ/qtrpdf/r_qt2603.htm",
+      "source": "BIS",
+      "color": "#164e63",
+      "tag": "ISO 20022",
+      "published": "2026-05-08T07:00:00Z",
+      "display_date": "08 May 2026"
+    },
+    {
+      "title": "SWIFT CSP 2026 mandatory controls updated — new cyber resilience requirements effective immediately",
+      "summary": "SWIFT has released updated Customer Security Programme mandatory controls for 2026, adding enhanced requirements around multi-factor authentication, secure API gateway configuration, and anomaly detection for Alliance environments.",
+      "link": "https://www.swift.com/myswift/customer-security-programme-csp",
+      "source": "SWIFT",
+      "color": "#0d2145",
+      "tag": "SWIFT CSP",
+      "published": "2026-05-05T09:30:00Z",
+      "display_date": "05 May 2026"
+    },
+    {
+      "title": "Banks accelerating AML technology refresh as FATF grey-listing pressure mounts",
+      "summary": "A survey of 120 compliance officers across Europe and Asia Pacific finds 78% are accelerating AML system replacements amid heightened FATF scrutiny. Real-time transaction monitoring and AI-based alert scoring top investment priorities for 2026.",
+      "link": "https://www.finextra.com/newsarticle/43100",
+      "source": "Finextra",
+      "color": "#1e40af",
+      "tag": "AML",
+      "published": "2026-05-03T10:00:00Z",
+      "display_date": "03 May 2026"
+    },
+    {
+      "title": "SWIFT gpi reaches 90% same-day settlement — UETR tracking now a corporate expectation",
+      "summary": "SWIFT reports that 90% of gpi payments are settled within the same business day. UETR-based end-to-end tracking is now a standard expectation from corporate treasury teams. Banks without gpi face growing pressure from large enterprise clients.",
+      "link": "https://www.swift.com/our-solutions/swift-gpi",
+      "source": "SWIFT",
+      "color": "#0d2145",
+      "tag": "SWIFT gpi",
+      "published": "2026-04-28T08:00:00Z",
+      "display_date": "28 Apr 2026"
+    },
+    {
+      "title": "Central banks accelerate CBDC interoperability pilots using ISO 20022 as native standard",
+      "summary": "Multiple CBDC projects including Project mBridge and BIS Innovation Hub initiatives are adopting ISO 20022 as the native messaging standard for interoperability between CBDC networks and traditional RTGS infrastructure.",
+      "link": "https://www.bis.org/about/bisih/topics/cbdc.htm",
+      "source": "BIS",
+      "color": "#164e63",
+      "tag": "CBDC / DLT",
+      "published": "2026-04-22T11:00:00Z",
+      "display_date": "22 Apr 2026"
+    },
+    {
+      "title": "EU DORA now fully enforceable — payment firms scrambling to evidence operational resilience",
+      "summary": "EU regulators have begun requesting operational resilience evidence packages from payment system operators. Firms without documented incident response and ICT risk management frameworks face immediate supervisory scrutiny and potential sanctions.",
+      "link": "https://www.eba.europa.eu/regulation-and-policy/dora",
+      "source": "EBA",
+      "color": "#1e3a8a",
+      "tag": "Regulation",
+      "published": "2026-04-15T09:00:00Z",
+      "display_date": "15 Apr 2026"
+    },
+    {
+      "title": "Real-time sanctions screening becomes baseline expectation across all instant payment rails",
+      "summary": "Regulators in the US, EU, UK and Singapore now treat batch-based sanctions screening as insufficient for sub-10-second payments. Real-time OFAC, UN, and EU list screening is the only compliant approach for instant payment operators.",
+      "link": "https://www.finextra.com/newsarticle/43088",
+      "source": "Finextra",
+      "color": "#1e40af",
+      "tag": "Sanctions",
+      "published": "2026-04-10T08:30:00Z",
+      "display_date": "10 Apr 2026"
+    },
+    {
+      "title": "Correspondent banking corridors shrink as de-risking continues — compliance costs cited",
+      "summary": "340 correspondent banking relationships terminated in Q1 2026 with compliance cost and AML risk cited as primary drivers. Smaller banks and emerging market institutions face increasing difficulty accessing dollar clearing without robust compliance infrastructure.",
+      "link": "https://www.pymnts.com/news/banking/2026/correspondent-banking-corridors",
+      "source": "PYMNTS",
+      "color": "#0f172a",
+      "tag": "AML",
+      "published": "2026-04-05T07:00:00Z",
+      "display_date": "05 Apr 2026"
+    }
+  ]
+}

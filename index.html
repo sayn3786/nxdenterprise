@@ -29,6 +29,7 @@
       <a href="#why">Why NXD</a>
       <a href="#solutions">Solutions</a>
       <a href="#models">How We Work</a>
+      <a href="#swift-world">SWIFT World</a>
       <a href="#leadership">Leadership</a>
       <a href="#analyser">Estimate</a>
       <a href="#proposal">Proposal</a>
@@ -777,6 +778,61 @@
 </section>
 
 
+
+<!-- SWIFT WORLD NEWS -->
+<section id="swift-world" style="background:var(--surf);padding:88px 0">
+  <div class="wrap">
+    <div class="shdr fu" style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:16px;margin-bottom:40px">
+      <div>
+        <span class="slabel">SWIFT World</span>
+        <h2 class="stitle">What's moving the industry.</h2>
+        <p class="ssub">Live news from the world of SWIFT, ISO 20022, AML, sanctions, and payments regulation — updated daily.</p>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px;flex-shrink:0">
+        <span id="newsUpdated" style="font-size:.75rem;color:var(--muted)">Loading...</span>
+        <a href="https://www.swift.com/news-events/news" target="_blank" rel="noopener"
+           class="btn btn-out btn-sm"><i class="fa-solid fa-arrow-up-right-from-square"></i> SWIFT.com</a>
+      </div>
+    </div>
+    <div id="newsFilters" class="fu" style="display:flex;gap:7px;flex-wrap:wrap;margin-bottom:28px">
+      <button class="news-tag-btn on" onclick="filterNews('all',this)">All</button>
+      <button class="news-tag-btn" onclick="filterNews('ISO 20022',this)">ISO 20022</button>
+      <button class="news-tag-btn" onclick="filterNews('AML',this)">AML</button>
+      <button class="news-tag-btn" onclick="filterNews('Sanctions',this)">Sanctions</button>
+      <button class="news-tag-btn" onclick="filterNews('SWIFT gpi',this)">SWIFT gpi</button>
+      <button class="news-tag-btn" onclick="filterNews('SWIFT CSP',this)">SWIFT CSP</button>
+      <button class="news-tag-btn" onclick="filterNews('CBDC / DLT',this)">CBDC / DLT</button>
+      <button class="news-tag-btn" onclick="filterNews('Regulation',this)">Regulation</button>
+    </div>
+    <div id="newsGrid" class="news-grid fu">
+      <div class="news-skeleton"></div>
+      <div class="news-skeleton"></div>
+      <div class="news-skeleton"></div>
+    </div>
+    <div id="newsEmpty" style="display:none;text-align:center;padding:48px;color:var(--muted);font-size:.9rem">No articles match this filter.</div>
+  </div>
+</section>
+<style>
+.news-tag-btn{padding:6px 15px;border-radius:50px;font-size:.78rem;font-weight:600;cursor:pointer;border:1.5px solid var(--border);background:#fff;color:var(--sub);transition:all .2s;font-family:'Inter',sans-serif}
+.news-tag-btn:hover{border-color:var(--vivid);color:var(--vivid)}
+.news-tag-btn.on{background:var(--navy);color:#fff;border-color:var(--navy)}
+.news-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.news-card{background:#fff;border:1px solid var(--border);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column;transition:all .3s;text-decoration:none;color:inherit}
+.news-card:hover{transform:translateY(-4px);box-shadow:var(--sh2);border-color:rgba(37,99,235,.18)}
+.news-card-top{height:5px}
+.news-card-body{padding:20px;flex:1;display:flex;flex-direction:column}
+.news-tag-label{display:inline-block;font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;padding:3px 10px;border-radius:50px;margin-bottom:10px}
+.news-title{font-size:.9rem;font-weight:700;color:var(--ink);line-height:1.45;margin-bottom:8px;flex:1}
+.news-summary{font-size:.78rem;color:var(--sub);line-height:1.6;margin-bottom:14px}
+.news-meta{display:flex;align-items:center;justify-content:space-between;font-size:.72rem;color:var(--muted);margin-top:auto}
+.news-source-lbl{font-weight:600;color:var(--sub)}
+.news-read{color:var(--vivid);font-weight:600;display:flex;align-items:center;gap:4px}
+.news-skeleton{background:linear-gradient(90deg,var(--surf2) 25%,#fff 50%,var(--surf2) 75%);background-size:200% 100%;animation:shimmer 1.4s infinite;border-radius:var(--r);height:240px}
+@keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+@media(max-width:1024px){.news-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:640px){.news-grid{grid-template-columns:1fr}}
+</style>
+
 <!-- LEADERSHIP -->
 <section id="leadership" style="background:#07111f;padding:88px 0">
   <div class="wrap">
@@ -904,12 +960,14 @@
         <a href="#analyser">Get Estimate</a>
         <a href="#proposal">Draft Proposal</a>
         <a href="#demo">Book Demo</a>
-        <a href="#leadership">Leadership</a>
+        <a href="#swift-world">SWIFT World</a>
+      <a href="#leadership">Leadership</a>
         <a href="#bespoke">Bespoke</a>
       </div>
       <div class="fcol"><h4>Company</h4>
         <a href="https://nextdimensionenterprise.com" target="_blank">About NxD</a>
-        <a href="#leadership">Leadership</a>
+        <a href="#swift-world">SWIFT World</a>
+      <a href="#leadership">Leadership</a>
         <a href="https://nextdimensionenterprise.com" target="_blank">Partners</a>
         <a href="https://nextdimensionenterprise.com" target="_blank">Certifications</a>
         <a href="mailto:binod.kumar@nextdimensionenterprise.com">Contact Sales</a>
@@ -952,5 +1010,64 @@
 
 
 <script src="assets/js/app.js"></script>
+<script>
+
+// ── SWIFT WORLD NEWS ──────────────────────────────────────────────────
+const TAG_COLORS = {
+  'ISO 20022':  {bg:'rgba(37,99,235,.08)',   col:'#1e40af', bar:'#2563eb'},
+  'AML':        {bg:'rgba(245,158,11,.08)',  col:'#92400e', bar:'#f59e0b'},
+  'Sanctions':  {bg:'rgba(239,68,68,.08)',   col:'#991b1b', bar:'#ef4444'},
+  'SWIFT gpi':  {bg:'rgba(16,185,129,.08)',  col:'#065f46', bar:'#10b981'},
+  'SWIFT CSP':  {bg:'rgba(99,102,241,.08)',  col:'#3730a3', bar:'#6366f1'},
+  'CBDC / DLT': {bg:'rgba(139,92,246,.08)',  col:'#5b21b6', bar:'#8b5cf6'},
+  'Regulation': {bg:'rgba(6,182,212,.08)',   col:'#155e75', bar:'#06b6d4'},
+  'Payments':   {bg:'rgba(13,33,69,.07)',    col:'#0d2145', bar:'#1e40af'},
+};
+let allArticles = [];
+
+function newsTagStyle(tag) {
+  return TAG_COLORS[tag] || {bg:'rgba(13,33,69,.07)',col:'#0d2145',bar:'#1e40af'};
+}
+
+function renderNewsCard(a) {
+  const ts = newsTagStyle(a.tag);
+  return '<a class="news-card" href="' + a.link + '" target="_blank" rel="noopener" data-tag="' + a.tag + '">' +
+    '<div class="news-card-top" style="background:' + ts.bar + '"></div>' +
+    '<div class="news-card-body">' +
+    '<span class="news-tag-label" style="background:' + ts.bg + ';color:' + ts.col + '">' + a.tag + '</span>' +
+    '<div class="news-title">' + a.title + '</div>' +
+    '<div class="news-summary">' + a.summary + '</div>' +
+    '<div class="news-meta">' +
+    '<span class="news-source-lbl"><i class="fa-solid fa-newspaper" style="margin-right:4px;font-size:.65rem"></i>' + a.source + ' &nbsp;&middot;&nbsp; ' + a.display_date + '</span>' +
+    '<span class="news-read">Read <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:.6rem"></i></span>' +
+    '</div></div></a>';
+}
+
+function filterNews(tag, btn) {
+  document.querySelectorAll('.news-tag-btn').forEach(function(b){b.classList.remove('on')});
+  btn.classList.add('on');
+  var filtered = tag === 'all' ? allArticles : allArticles.filter(function(a){return a.tag === tag});
+  var grid = document.getElementById('newsGrid');
+  var empty = document.getElementById('newsEmpty');
+  if (filtered.length === 0) { grid.innerHTML=''; empty.style.display='block'; }
+  else { empty.style.display='none'; grid.innerHTML = filtered.map(renderNewsCard).join(''); }
+}
+
+async function loadSwiftNews() {
+  var grid = document.getElementById('newsGrid');
+  try {
+    var resp = await fetch('swift-news.json?v=' + Date.now());
+    var data = await resp.json();
+    allArticles = data.articles || [];
+    grid.innerHTML = allArticles.map(renderNewsCard).join('');
+    var upd = document.getElementById('newsUpdated');
+    if (upd) upd.textContent = 'Updated ' + (data.updated || 'recently');
+  } catch(e) {
+    grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:48px;color:var(--sub)"><i class="fa-solid fa-satellite-dish" style="font-size:2rem;opacity:.2;margin-bottom:12px;display:block"></i>Feed refreshing — check back shortly.</div>';
+  }
+}
+loadSwiftNews();
+
+</script>
 </body>
 </html>
