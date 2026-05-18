@@ -1,133 +1,127 @@
 #!/usr/bin/env python3
 """
-Fetches SWIFT & payments news from multiple public RSS feeds,
-filters for relevant articles, and writes swift-news.json.
-Runs daily via GitHub Actions.
+Fetches latest SWIFT Standards Releases + SWIFT news + payments industry RSS.
+Prioritises swift.com content. Falls back to industry RSS feeds.
+Writes swift-news.json — committed daily by GitHub Actions.
 """
 import json, re, html, datetime, sys
-import feedparser
-import requests
-from dateutil import parser as dateparser
+try:
+    import feedparser, requests
+    from dateutil import parser as dateparser
+except ImportError:
+    import subprocess
+    subprocess.run([sys.executable, '-m', 'pip', 'install',
+                    'requests', 'feedparser', 'python-dateutil', '-q'])
+    import feedparser, requests
+    from dateutil import parser as dateparser
 
 KEYWORDS = [
-    'swift', 'iso 20022', 'mx migration', 'gpi', 'cbdc',
-    'instant payment', 'rtgs', 'sanctions screening', 'aml',
-    'anti-money laundering', 'correspondent banking', 'cross-border payment',
-    'payment modernisation', 'payment modernization', 'fintech',
-    'bank compliance', 'financial crime', 'kyc', 'basel',
+    'swift','iso 20022','mx migration','pacs','camt','gpi','cbdc',
+    'instant payment','rtgs','sanctions','aml','anti-money laundering',
+    'correspondent banking','cross-border payment','payment modernis',
+    'financial crime','kyc','csp','customer security','standards release',
+    'blockchain','dlt','tokenised','post-quantum','structured address',
+]
+
+TAG_MAP = [
+    (['iso 20022','pacs','camt','mx','mt migration','structured address',
+      'standards release','coexistence'],                        'ISO 20022'),
+    (['sanction','ofac','watchlist','pep'],                      'Sanctions'),
+    (['aml','financial crime','money laundering','fatf'],        'AML'),
+    (['cbdc','digital currency','blockchain','dlt','tokenised',
+      'hyperledger','ethereum','evm'],                           'CBDC / DLT'),
+    (['gpi','uetr','tracking'],                                  'SWIFT gpi'),
+    (['instant','faster payment','real-time payment','retail payment',
+      'consumer payment'],                                       'Instant Payments'),
+    (['csp','customer security','cyber','post-quantum','cscf'],  'SWIFT CSP'),
+    (['dora','mifid','basel','regulation','compliance mandate'],  'Regulation'),
 ]
 
 SOURCES = [
-    {
-        'url': 'https://www.finextra.com/rss/finextra-news.xml',
-        'name': 'Finextra',
-        'color': '#0d2145',
-    },
-    {
-        'url': 'https://feeds.a.dj.com/rss/RSSMarketsMain.xml',
-        'name': 'Wall Street Journal',
-        'color': '#07111f',
-    },
-    {
-        'url': 'https://www.centralbanking.com/rss',
-        'name': 'Central Banking',
-        'color': '#1e3a8a',
-    },
-    {
-        'url': 'https://www.bis.org/rss/home.rss',
-        'name': 'BIS',
-        'color': '#164e63',
-    },
-    {
-        'url': 'https://www.pymnts.com/feed/',
-        'name': 'PYMNTS',
-        'color': '#0f172a',
-    },
-    {
-        'url': 'https://www.reuters.com/arc/outboundfeeds/v3/category/business/?outputType=xml',
-        'name': 'Reuters',
-        'color': '#7c3aed',
-    },
-    {
-        'url': 'https://feeds.feedburner.com/ThePaymentsNerd',
-        'name': 'The Payments Nerd',
-        'color': '#065f46',
-    },
+    # SWIFT own RSS / news feeds (highest priority)
+    {'url':'https://www.swift.com/rss.xml',                         'name':'SWIFT','pri':1},
+    {'url':'https://www.swift.com/news-events/news.rss',            'name':'SWIFT','pri':1},
+    # Industry
+    {'url':'https://www.finextra.com/rss/finextra-news.xml',        'name':'Finextra','pri':2},
+    {'url':'https://www.pymnts.com/feed/',                          'name':'PYMNTS','pri':3},
+    {'url':'https://www.bis.org/rss/home.rss',                      'name':'BIS','pri':2},
+    {'url':'https://www.centralbanking.com/rss',                    'name':'Central Banking','pri':3},
+    {'url':'https://feeds.a.dj.com/rss/RSSMarketsMain.xml',        'name':'WSJ Markets','pri':4},
 ]
 
-def is_relevant(title, summary=''):
-    text = (title + ' ' + summary).lower()
-    return any(kw in text for kw in KEYWORDS)
+HDRS = {'User-Agent':'Mozilla/5.0 (compatible; NXD-NewsFetcher/1.0)'}
 
-def clean(text):
+def is_relevant(title, summary=''):
+    t = (title + ' ' + summary).lower()
+    return any(k in t for k in KEYWORDS)
+
+def get_tag(title):
+    t = title.lower()
+    for kws, tag in TAG_MAP:
+        if any(k in t for k in kws):
+            return tag
+    return 'Payments'
+
+def clean(text, maxlen=200):
     text = html.unescape(text or '')
     text = re.sub(r'<[^>]+>', '', text)
     text = re.sub(r'\s+', ' ', text).strip()
-    return text[:200] + ('…' if len(text) > 200 else '')
+    return text[:maxlen] + ('...' if len(text) > maxlen else '')
 
-def tag_for(title):
-    t = title.lower()
-    if any(k in t for k in ['iso 20022','mx','mt migration','pacs','camt']): return 'ISO 20022'
-    if any(k in t for k in ['sanction','ofac','watchlist']): return 'Sanctions'
-    if any(k in t for k in ['aml','financial crime','money laundering']): return 'AML'
-    if any(k in t for k in ['cbdc','digital currency','blockchain','dlt']): return 'CBDC/DLT'
-    if any(k in t for k in ['gpi','uetr','tracking']): return 'SWIFT gpi'
-    if any(k in t for k in ['instant','rtgs','faster payment']): return 'Instant Payments'
-    if any(k in t for k in ['csp','customer security','cyber']): return 'SWIFT CSP'
-    return 'Payments'
+def parse_date(raw):
+    try:
+        dt = dateparser.parse(raw)
+        return dt.strftime('%Y-%m-%dT%H:%M:%SZ'), dt.strftime('%d %b %Y')
+    except Exception:
+        now = datetime.datetime.utcnow()
+        return now.strftime('%Y-%m-%dT%H:%M:%SZ'), 'Recent'
 
 articles = []
-headers = {'User-Agent': 'Mozilla/5.0 (compatible; NXD-NewsFetcher/1.0)'}
-
-for source in SOURCES:
+for src in SOURCES:
     try:
-        resp = requests.get(source['url'], headers=headers, timeout=12)
-        feed = feedparser.parse(resp.content)
-        for entry in feed.entries[:20]:
-            title   = clean(entry.get('title', ''))
-            summary = clean(entry.get('summary', entry.get('description', '')))
-            link    = entry.get('link', '')
-            pub_raw = entry.get('published', entry.get('updated', ''))
-            try:
-                pub_dt = dateparser.parse(pub_raw)
-                pub_iso = pub_dt.strftime('%Y-%m-%dT%H:%M:%SZ')
-                pub_display = pub_dt.strftime('%d %b %Y')
-            except Exception:
-                pub_iso = datetime.datetime.utcnow().isoformat() + 'Z'
-                pub_display = 'Recent'
-
+        r = requests.get(src['url'], headers=HDRS, timeout=12)
+        feed = feedparser.parse(r.content)
+        for entry in feed.entries[:25]:
+            title   = clean(entry.get('title',''))
+            summary = clean(entry.get('summary', entry.get('description','')))
+            link    = entry.get('link','')
+            pub_iso, pub_disp = parse_date(entry.get('published', entry.get('updated','')))
             if title and is_relevant(title, summary):
                 articles.append({
-                    'title':       title,
-                    'summary':     summary,
-                    'link':        link,
-                    'source':      source['name'],
-                    'color':       source['color'],
-                    'tag':         tag_for(title),
-                    'published':   pub_iso,
-                    'display_date': pub_display,
+                    'title':        title,
+                    'summary':      summary,
+                    'link':         link,
+                    'source':       src['name'],
+                    'color':        '#07111f' if src['name']=='SWIFT' else '#0d2145',
+                    'tag':          get_tag(title),
+                    'published':    pub_iso,
+                    'display_date': pub_disp,
+                    '_pri':         src['pri'],
                 })
     except Exception as e:
-        print(f"  ⚠ {source['name']}: {e}", file=sys.stderr)
+        print(f'  skip {src["name"]}: {e}', file=sys.stderr)
 
-# Sort by date, newest first; deduplicate by title
-seen = set()
-unique = []
-for a in sorted(articles, key=lambda x: x['published'], reverse=True):
-    key = a['title'][:60].lower()
+# Sort: primary source first, then by date
+articles.sort(key=lambda x: (x['_pri'], x['published']), reverse=False)
+articles.sort(key=lambda x: x['published'], reverse=True)
+
+# Deduplicate
+seen, unique = set(), []
+for a in articles:
+    key = a['title'][:55].lower()
     if key not in seen:
         seen.add(key)
+        a.pop('_pri', None)
         unique.append(a)
     if len(unique) >= 9:
         break
 
-output = {
+out = {
     'updated': datetime.datetime.utcnow().strftime('%d %b %Y, %H:%M UTC'),
-    'count': len(unique),
+    'count':   len(unique),
+    'source_credit': 'swift.com + industry feeds',
     'articles': unique,
 }
-
-with open('swift-news.json', 'w', encoding='utf-8') as f:
-    json.dump(output, f, indent=2, ensure_ascii=False)
-
-print(f"✅ Wrote {len(unique)} articles to swift-news.json")
+with open('swift-news.json','w',encoding='utf-8') as f:
+    json.dump(out, f, indent=2, ensure_ascii=False)
+print(f'Wrote {len(unique)} articles.')
