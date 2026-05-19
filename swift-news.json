@@ -1,97 +1,37 @@
 {
-  "updated": "18 May 2026, 12:00 UTC",
-  "count": 9,
-  "source_credit": "swift.com",
+  "updated": "19 May 2026, 09:41 UTC",
+  "count": 3,
+  "source_credit": "swift.com + industry feeds",
   "articles": [
     {
-      "title": "SWIFT blockchain-based shared ledger progresses to MVP — 40+ banks onboarded",
-      "summary": "SWIFT's blockchain-based shared ledger has moved from design to MVP implementation with live transactions planned for 2026. Built on Hyperledger Besu (EVM-compatible), the ledger introduces a shared orchestration layer enabling tokenised deposit settlement and 24/7 cross-border payments.",
-      "link": "https://www.swift.com/news-events/news/swifts-blockchain-based-shared-ledger-progresses-mvp-implementation",
-      "source": "SWIFT",
-      "color": "#07111f",
-      "tag": "CBDC / DLT",
-      "published": "2026-05-15T08:00:00Z",
-      "display_date": "15 May 2026"
+      "title": "Stripe-Backed Tempo Expands Into Lending With Morpho Integration",
+      "summary": "Tempo is expanding its push into institutional stablecoin infrastructure by adding decentralized lending and yield capabilities to its blockchain. The Stripe- and Paradigm-backed company said it is in...",
+      "link": "https://www.pymnts.com/cryptocurrency/2026/tempo-expands-beyond-payments-with-morpho-integration/",
+      "source": "PYMNTS",
+      "color": "#0d2145",
+      "tag": "Payments",
+      "published": "2026-05-18T22:36:45Z",
+      "display_date": "18 May 2026"
     },
     {
-      "title": "50+ banks roll out new SWIFT consumer payments framework — instant settlement across 11 corridors",
-      "summary": "Over 50 banks worldwide have signed up to SWIFT's new payments scheme framework for retail transactions. Initial corridors cover Australia, Canada, China, Germany, India, UK and US — with guaranteed full-value delivery, upfront cost transparency, end-to-end traceability and instant settlement where available.",
-      "link": "https://www.swift.com/news-events/news/transforming-consumer-payments-banks-roll-out-new-framework-retail-transactions",
-      "source": "SWIFT",
-      "color": "#07111f",
-      "tag": "Instant Payments",
-      "published": "2026-05-12T09:00:00Z",
-      "display_date": "12 May 2026"
+      "title": "Arabica Coffee Prices Hit Record on U.S., Colombia Tariff Spat",
+      "summary": "Arabica coffee prices hit a record level, as traders digested the withdrawal of President Trump’s threats to impose tariffs and economic sanctions on Colombia.",
+      "link": "https://www.wsj.com/articles/arabica-coffee-prices-hit-new-high-on-u-s-colombia-tariff-spat-582446fe?mod=rss_markets_main",
+      "source": "WSJ Markets",
+      "color": "#0d2145",
+      "tag": "Payments",
+      "published": "2025-01-27T12:20:00Z",
+      "display_date": "27 Jan 2025"
     },
     {
-      "title": "Standards Release 2025: MT coexistence period ended — ISO 20022 MX now mandatory on SWIFT",
-      "summary": "The November 2025 Standards Release formally ended the MT/MX coexistence period for cross-border FI-to-FI payment instructions. Messages are now automatically validated against ISO 20022 rules. Cash reporting messages camt.052/053/054 are also live from SR 2025.",
-      "link": "https://www.swift.com/standards/standards-releases",
-      "source": "SWIFT",
-      "color": "#07111f",
-      "tag": "ISO 20022",
-      "published": "2026-04-20T08:00:00Z",
-      "display_date": "20 Apr 2026"
-    },
-    {
-      "title": "Standards Release 2026: Unstructured postal addresses to be removed from SWIFT network in November",
-      "summary": "From November 2026, the SWIFT network will no longer accept unstructured postal addresses in CBPR+ ISO 20022 messages. All financial institutions must migrate to structured address fields (town, country) before the SR 2026 deadline to avoid payment rejections.",
-      "link": "https://www.swift.com/standards/standards-releases/release-highlights",
-      "source": "SWIFT",
-      "color": "#07111f",
-      "tag": "ISO 20022",
-      "published": "2026-04-10T09:00:00Z",
-      "display_date": "10 Apr 2026"
-    },
-    {
-      "title": "97% of SWIFT messages now sent in ISO 20022 format — adoption milestone reached",
-      "summary": "SWIFT confirms that 97% of messages over its network are now transmitted in ISO 20022 format, marking a historic milestone in the global adoption of the new payment messaging standard. 75% of cross-border payments reach the beneficiary institution within 10 minutes.",
-      "link": "https://www.swift.com/standards/iso-20022/iso-20022-faqs/implementation",
-      "source": "SWIFT",
-      "color": "#07111f",
-      "tag": "ISO 20022",
-      "published": "2026-04-05T08:00:00Z",
-      "display_date": "05 Apr 2026"
-    },
-    {
-      "title": "CSCF v2026: Post-Quantum Security readiness added to CSP mandatory controls",
-      "summary": "The Customer Security Controls Framework v2026 introduces Post-Quantum Security Readiness as a new advisory control, with a roadmap toward mandatory post-quantum cryptography adoption. SWIFT CSP refresher sessions are live for all financial institutions on the SWIFT network.",
-      "link": "https://www.swift.com/news-events/webinars/swift-customer-security-programme-csp-refresher-sessions",
-      "source": "SWIFT",
-      "color": "#07111f",
-      "tag": "SWIFT CSP",
-      "published": "2026-03-28T10:00:00Z",
-      "display_date": "28 Mar 2026"
-    },
-    {
-      "title": "camt.110 with embedded MT 199 required for Case Management by November 2026",
-      "summary": "All financial institutions must be able to receive camt.110 messages with an embedded MT 199 through SWIFT Case Management by the November 2026 Standards Release. Institutions not prepared will be unable to participate in automated exception and investigation workflows.",
-      "link": "https://www.swift.com/standards/standards-releases",
-      "source": "SWIFT",
-      "color": "#07111f",
-      "tag": "ISO 20022",
-      "published": "2026-03-15T09:00:00Z",
-      "display_date": "15 Mar 2026"
-    },
-    {
-      "title": "SWIFT AI address structuring model launched — auto-converts unstructured legacy addresses to ISO 20022",
-      "summary": "SWIFT has launched an AI-powered address structuring model that automatically converts legacy unstructured postal addresses into ISO 20022-compliant structured formats. The model helps financial institutions meet the November 2026 structured address deadline without manual data remediation.",
-      "link": "https://www.swift.com/standards/iso-20022/iso-20022-faqs/swift-ai-address-structuring-model",
-      "source": "SWIFT",
-      "color": "#07111f",
-      "tag": "ISO 20022",
-      "published": "2026-03-01T08:00:00Z",
-      "display_date": "01 Mar 2026"
-    },
-    {
-      "title": "November 2027 deadline: All payment cancellations must migrate to camt.056/029 — MT no longer supported",
-      "summary": "SWIFT has confirmed that by November 2027, all payment cancellation messages must be in ISO 20022 formats (camt.056 and camt.029). MT-based cancellation messages will no longer be supported on the SWIFT network. Institutions should begin migration planning now.",
-      "link": "https://www.swift.com/standards/iso-20022/iso-20022-faqs/mt-iso-20022-conversion",
-      "source": "SWIFT",
-      "color": "#07111f",
-      "tag": "ISO 20022",
-      "published": "2026-02-20T09:00:00Z",
-      "display_date": "20 Feb 2026"
+      "title": "Russia's Crude Exports Fairly Stable Despite U.S. Sanctions, Goldman Says",
+      "summary": "Oil edged lower in early trade as Goldman Sachs said the latest round of U.S. sanctions against Russia haven’t had a significant impact on the country’s oil exports.",
+      "link": "https://www.wsj.com/articles/oil-futures-fall-after-trump-calls-for-tariffs-on-colombia-5b2a178c?mod=rss_markets_main",
+      "source": "WSJ Markets",
+      "color": "#0d2145",
+      "tag": "Sanctions",
+      "published": "2025-01-27T04:46:00Z",
+      "display_date": "27 Jan 2025"
     }
   ]
 }
