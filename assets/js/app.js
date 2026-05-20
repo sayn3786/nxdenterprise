@@ -184,8 +184,25 @@ function confirmDemo(){
   if(!sc){alert('Please describe what you want to see in the demo — it helps us prepare.');return}
   const c=document.getElementById('dConf');c.style.display='block';
   const mo=document.getElementById('calLabel').textContent.split(' ')[0];
-  document.getElementById('dConfTxt').textContent=`Your ${sol} demo is confirmed for ${mo} ${day.textContent} at ${slot.textContent} (IST). We'll prepare a tailored walkthrough covering: "${sc.substring(0,100)}${sc.length>100?'…':''}". A calendar invite will be sent to ${e}.`;
-  addMsg('b',`✅ Demo confirmed for ${n} at ${o} — ${sol} on ${mo} ${day.textContent} at ${slot.textContent}. Our team is preparing a custom walkthrough for your specific scenario. See you there.`);
+  const dateStr=mo+' '+day.textContent;
+  document.getElementById('dConfTxt').textContent=`Your ${sol} demo is confirmed for ${dateStr} at ${slot.textContent} (IST). We'll prepare a tailored walkthrough covering: "${sc.substring(0,100)}${sc.length>100?'…':''}". Our team will reach out to ${e} with a calendar invite shortly.`;
+  addMsg('b',`✅ Demo confirmed for ${n} at ${o} — ${sol} on ${dateStr} at ${slot.textContent} IST. Our team is preparing a custom walkthrough. You'll receive a calendar invite at ${e}. See you there.`);
+  // Notify NXD team via mailto — client's email client opens pre-filled
+  const subj=encodeURIComponent('Demo Booking: '+sol+' — '+n+' ('+o+')');
+  const body=encodeURIComponent(
+    'New demo booking received via NXD Enterprise website.\n\n'+
+    'Client Name : '+n+'\n'+
+    'Organisation : '+o+'\n'+
+    'Work Email  : '+e+'\n'+
+    'Solution    : '+sol+'\n'+
+    'Date        : '+dateStr+'\n'+
+    'Time        : '+slot.textContent+' IST\n\n'+
+    'What they want to see:\n'+sc+'\n\n'+
+    '---\nAction required: Send a calendar invite to '+e+' and prepare a tailored '+sol+' demo.\n'+
+    'This booking was confirmed on '+new Date().toUTCString()
+  );
+  const cc=encodeURIComponent('binod.kumar@nextdimensionenterprise.com,inbavanan@nextdimensionenterprise.com,santosh.yadav@nextdimensionenterprise.com');
+  setTimeout(()=>{window.open('mailto:contact@nextdimensionenterprise.com?cc='+cc+'&subject='+subj+'&body='+body,'_self');},1500);
 }
 
 // ── CHAT ──
@@ -225,12 +242,4 @@ function botReply(q){
   setTimeout(()=>{
     t.remove();
     let r=null;
-    for(const[,kb] of Object.entries(CW)){if(kb.kw.some(k=>lo.includes(k))){r=kb.reply;break}}
-    if(!r){
-      if(lo.match(/^(hi|hello|hey|good)/i))r='Hello — good to connect. I\'m NXD\'s solution advisor, with deep knowledge of SWIFT, ISO 20022, AML, and payment infrastructure. What\'s the challenge you\'re trying to solve today?';
-      else if(lo.includes('integrat'))r='Integration is where most vendor implementations fail — they don\'t account for the specifics of your CBS, your RTGS connector, or your message format quirks. NXD builds the adapter layer as part of every engagement, not as an add-on.<br><br>Which systems do you need to connect, and in which direction?';
-      else r='That\'s worth a proper conversation with one of our solution architects. It may span multiple areas we cover — or it may be something we\'ve not seen before. Either way, a 60-minute discovery call is the right starting point.<br><br>Want to book one now, or run your requirement through the Analyser first?';
-    }
-    addMsg('b',r);
-  },1100);
-}
+    for(const[,kb] of Object.entries(CW)){if(kb.
