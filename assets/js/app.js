@@ -242,4 +242,70 @@ function botReply(q){
   setTimeout(()=>{
     t.remove();
     let r=null;
-    for(const[,kb] of Object.entries(CW)){if(
+    for(const[,kb] of Object.entries(CW)){if(kb.kw.some(k=>lo.includes(k))){r=kb.reply;break}}
+    if(!r){
+      if(lo.match(/^(hi|hello|hey|good)/i))r='Hello — good to connect. I\'m NXD\'s solution advisor, with deep knowledge of SWIFT, ISO 20022, AML, and payment infrastructure. What\'s the challenge you\'re trying to solve today?';
+      else if(lo.includes('demo')||lo.includes('book')||lo.includes('meeting'))r='Happy to set up a demo — use the booking section above or click <strong>Book Demo</strong>. Tell me a bit about your environment first and I\'ll make sure the team prepares a session that\'s actually relevant to your stack.';
+      else if(lo.includes('contact')||lo.includes('email')||lo.includes('reach')||lo.includes('talk'))r='You can reach us at <a href="mailto:contact@nextdimensionenterprise.com" style="color:var(--vivid)">contact@nextdimensionenterprise.com</a> or book a demo slot directly on this page. What would you like to discuss?';
+      else r='That\'s a good question — let me make sure I give you a useful answer rather than a generic one. Could you share a bit more context? For example: what\'s your core banking system, which payment rails are in scope, and what\'s the primary compliance mandate you\'re working against? That helps me zero in on what NXD can specifically do for you.';
+    }
+    addMsg('b',r);
+  },900);
+}
+
+// ── SWIFT WORLD NEWS ──────────────────────────────────────────────────
+const TAG_COLORS = {
+  'ISO 20022':  {bg:'rgba(37,99,235,.08)',   col:'#1e40af', bar:'#2563eb'},
+  'AML':        {bg:'rgba(245,158,11,.08)',  col:'#92400e', bar:'#f59e0b'},
+  'Sanctions':  {bg:'rgba(239,68,68,.08)',   col:'#991b1b', bar:'#ef4444'},
+  'SWIFT gpi':  {bg:'rgba(16,185,129,.08)',  col:'#065f46', bar:'#10b981'},
+  'SWIFT CSP':  {bg:'rgba(99,102,241,.08)',  col:'#3730a3', bar:'#6366f1'},
+  'CBDC / DLT': {bg:'rgba(139,92,246,.08)',  col:'#5b21b6', bar:'#8b5cf6'},
+  'Regulation': {bg:'rgba(6,182,212,.08)',   col:'#155e75', bar:'#06b6d4'},
+  'Instant Payments':{bg:'rgba(16,185,129,.08)',col:'#065f46',bar:'#10b981'},
+  'Payments':   {bg:'rgba(13,33,69,.07)',    col:'#0d2145', bar:'#1e40af'},
+};
+let allArticles = [];
+
+function newsTagStyle(tag) {
+  return TAG_COLORS[tag] || {bg:'rgba(13,33,69,.07)',col:'#0d2145',bar:'#1e40af'};
+}
+
+function renderNewsCard(a) {
+  const ts = newsTagStyle(a.tag);
+  return '<a class="news-card" href="' + a.link + '" target="_blank" rel="noopener" data-tag="' + a.tag + '">' +
+    '<div class="news-card-top" style="background:' + ts.bar + '"></div>' +
+    '<div class="news-card-body">' +
+    '<span class="news-tag-label" style="background:' + ts.bg + ';color:' + ts.col + '">' + a.tag + '</span>' +
+    '<div class="news-title">' + a.title + '</div>' +
+    '<div class="news-summary">' + a.summary + '</div>' +
+    '<div class="news-meta">' +
+    '<span class="news-source-lbl"><i class="fa-solid fa-newspaper" style="margin-right:4px;font-size:.65rem"></i>' + a.source + ' &nbsp;&middot;&nbsp; ' + a.display_date + '</span>' +
+    '<span class="news-read">Read <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:.6rem"></i></span>' +
+    '</div></div></a>';
+}
+
+function filterNews(tag, btn) {
+  document.querySelectorAll('.news-tag-btn').forEach(function(b){b.classList.remove('on')});
+  btn.classList.add('on');
+  var filtered = tag === 'all' ? allArticles : allArticles.filter(function(a){return a.tag === tag});
+  var grid = document.getElementById('newsGrid');
+  var empty = document.getElementById('newsEmpty');
+  if (filtered.length === 0) { grid.innerHTML=''; empty.style.display='block'; }
+  else { empty.style.display='none'; grid.innerHTML = filtered.map(renderNewsCard).join(''); }
+}
+
+async function loadSwiftNews() {
+  var grid = document.getElementById('newsGrid');
+  try {
+    var resp = await fetch('swift-news.json?v=' + Date.now());
+    var data = await resp.json();
+    allArticles = data.articles || [];
+    grid.innerHTML = allArticles.map(renderNewsCard).join('');
+    var upd = document.getElementById('newsUpdated');
+    if (upd) upd.textContent = 'Updated ' + (data.updated || 'recently');
+  } catch(e) {
+    grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:48px;color:var(--sub)"><i class="fa-solid fa-satellite-dish" style="font-size:2rem;opacity:.2;margin-bottom:12px;display:block"></i>Feed refreshing — check back shortly.</div>';
+  }
+}
+loadSwiftNews();
