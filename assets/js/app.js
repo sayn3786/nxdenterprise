@@ -177,56 +177,90 @@ function pickSlot(el){if(el.classList.contains('full'))return;document.querySele
 renderCal();
 
 function confirmDemo(){
-  const n=document.getElementById('dName').value.trim(),o=document.getElementById('dOrg').value.trim(),e=document.getElementById('dEmail').value.trim(),sc=document.getElementById('dScope').value.trim(),sol=document.getElementById('dSol').value;
+  const n=document.getElementById('dName').value.trim(),
+        o=document.getElementById('dOrg').value.trim(),
+        e=document.getElementById('dEmail').value.trim(),
+        sc=document.getElementById('dScope').value.trim(),
+        sol=document.getElementById('dSol').value;
   const day=document.querySelector('.cd.sel'),slot=document.querySelector('.slot.on');
   if(!n||!o||!e){alert('Please fill in Name, Organisation and Email.');return}
   if(!day||!slot){alert('Please select a date and time slot.');return}
   if(!sc){alert('Please describe what you want to see in the demo — it helps us prepare.');return}
+
   const mo=document.getElementById('calLabel').textContent.split(' ')[0];
   const dateStr=mo+' '+day.textContent;
   const slotTxt=slot.textContent;
 
-  // Lock button
   const btn=document.querySelector('[onclick="confirmDemo()"]');
   const origLabel=btn.innerHTML;
   btn.disabled=true;
   btn.innerHTML='<i class="fa-solid fa-spinner fa-spin"></i> Sending booking…';
 
-  const params={
-    client_name:  n,
-    client_org:   o,
-    client_email: e,
-    solution:     sol,
-    booking_date: dateStr,
-    booking_time: slotTxt+' IST',
-    demo_scope:   sc,
-    booked_at:    new Date().toUTCString()
-  };
-
-  function onSuccess(){
+  function showConfirm(){
     btn.innerHTML='<i class="fa-solid fa-circle-check"></i> Booking Confirmed';
     btn.style.background='#059669';
-    const c=document.getElementById('dConf');c.style.display='block';
-    document.getElementById('dConfTxt').textContent='Your '+sol+' demo is confirmed for '+dateStr+' at '+slotTxt+' (IST). We\'ll prepare a tailored walkthrough covering: "'+sc.substring(0,100)+(sc.length>100?'…':'')+'". A confirmation email has been sent to '+e+'.';
-    addMsg('b','✅ Demo confirmed for '+n+' at '+o+' — '+sol+' on '+dateStr+' at '+slotTxt+' IST. Confirmation sent to '+e+'. Our team will follow up with a calendar invite. See you there.');
+    document.getElementById('dConf').style.display='block';
+    document.getElementById('dConfTxt').textContent=
+      'Your '+sol+' demo is confirmed for '+dateStr+' at '+slotTxt+
+      ' (IST). We\'ll prepare a tailored walkthrough covering: "'+
+      sc.substring(0,100)+(sc.length>100?'…':'')+
+      '". A confirmation email has been sent to '+e+'.';
+    addMsg('b','✅ Demo confirmed for '+n+' at '+o+' — '+sol+' on '+dateStr+
+      ' at '+slotTxt+' IST. Confirmation sent to '+e+
+      '. Our team will follow up with a calendar invite. See you there.');
   }
 
-  function onError(err){
-    btn.disabled=false;
-    btn.innerHTML=origLabel;
-    console.error('EmailJS error:',err);
-    alert('Booking noted! We had a hiccup sending the confirmation email — please also drop us a note at contact@nextdimensionenterprise.com so we can confirm your slot.');
-    onSuccess();
+  const KEY=window.W3F_KEY||'';
+  if(!KEY||KEY==='YOUR_ACCESS_KEY'){
+    // Not yet configured — show on-page confirmation
+    setTimeout(showConfirm,800);
+    console.warn('Web3Forms key not set. Get yours free at https://web3forms.com');
+    return;
   }
 
-  // Send via EmailJS
-  const ejs=window.EJS||{};
-  if(ejs.publicKey&&ejs.publicKey!=='YOUR_PUBLIC_KEY'){
-    emailjs.send(ejs.serviceId,ejs.templateId,params).then(onSuccess,onError);
-  } else {
-    setTimeout(onSuccess,800);
-    console.warn('EmailJS not yet configured. Add your keys to window.EJS in index.html.');
-  }
+  // Build email body
+  const body=
+    'New demo booking via NXD Enterprise website\n\n'+
+    'Client Name  : '+n+'\n'+
+    'Organisation : '+o+'\n'+
+    'Work Email   : '+e+'\n'+
+    'Solution     : '+sol+'\n'+
+    'Date         : '+dateStr+'\n'+
+    'Time         : '+slotTxt+' IST\n\n'+
+    'What they want to see:\n'+sc+'\n\n'+
+    'Booked at    : '+new Date().toUTCString()+'\n'+
+    'Action: Send calendar invite to '+e+' and prepare '+sol+' demo.';
+
+  // Send via Web3Forms — server-side, no browser pop-up
+  fetch('https://api.web3forms.com/submit',{
+    method:'POST',
+    headers:{'Content-Type':'application/json','Accept':'application/json'},
+    body:JSON.stringify({
+      access_key: KEY,
+      subject: 'Demo Booking: '+sol+' — '+n+' ('+o+')',
+      from_name: 'NXD Enterprise Website',
+      replyto: e,
+      message: body,
+      // Extra fields shown in Web3Forms dashboard
+      client_name: n,
+      organisation: o,
+      client_email: e,
+      solution: sol,
+      date: dateStr,
+      time: slotTxt+' IST'
+    })
+  })
+  .then(r=>r.json())
+  .then(data=>{
+    if(data.success){showConfirm();}
+    else{throw new Error(data.message||'Send failed');}
+  })
+  .catch(err=>{
+    console.error('Web3Forms error:',err);
+    btn.disabled=false;btn.innerHTML=origLabel;
+    alert('Booking noted — but the confirmation email had a hiccup. Please also email contact@nextdimensionenterprise.com directly to lock in your slot.');
+    showConfirm();
+  });
 }
 
 
@@ -280,21 +314,19 @@ function botReply(q){
 }
 
 // ── SWIFT WORLD NEWS ──────────────────────────────────────────────────
-const TAG_COLORS = {
-  'ISO 20022':      {bg:'rgba(37,99,235,.08)',  col:'#1e40af', bar:'#2563eb'},
-  'AML':            {bg:'rgba(245,158,11,.08)', col:'#92400e', bar:'#f59e0b'},
-  'Sanctions':      {bg:'rgba(239,68,68,.08)',  col:'#991b1b', bar:'#ef4444'},
-  'SWIFT gpi':      {bg:'rgba(16,185,129,.08)', col:'#065f46', bar:'#10b981'},
-  'SWIFT CSP':      {bg:'rgba(99,102,241,.08)', col:'#3730a3', bar:'#6366f1'},
-  'CBDC / DLT':     {bg:'rgba(139,92,246,.08)', col:'#5b21b6', bar:'#8b5cf6'},
-  'Regulation':     {bg:'rgba(6,182,212,.08)',  col:'#155e75', bar:'#06b6d4'},
-  'Instant Payments':{bg:'rgba(16,185,129,.08)',col:'#065f46', bar:'#10b981'},
-  'Payments':       {bg:'rgba(13,33,69,.07)',   col:'#0d2145', bar:'#1e40af'},
+const TAG_COLORS={
+  'ISO 20022':      {bg:'rgba(37,99,235,.08)',  col:'#1e40af',bar:'#2563eb'},
+  'AML':            {bg:'rgba(245,158,11,.08)', col:'#92400e',bar:'#f59e0b'},
+  'Sanctions':      {bg:'rgba(239,68,68,.08)',  col:'#991b1b',bar:'#ef4444'},
+  'SWIFT gpi':      {bg:'rgba(16,185,129,.08)', col:'#065f46',bar:'#10b981'},
+  'SWIFT CSP':      {bg:'rgba(99,102,241,.08)', col:'#3730a3',bar:'#6366f1'},
+  'CBDC / DLT':     {bg:'rgba(139,92,246,.08)', col:'#5b21b6',bar:'#8b5cf6'},
+  'Regulation':     {bg:'rgba(6,182,212,.08)',  col:'#155e75',bar:'#06b6d4'},
+  'Instant Payments':{bg:'rgba(16,185,129,.08)',col:'#065f46',bar:'#10b981'},
+  'Payments':       {bg:'rgba(13,33,69,.07)',   col:'#0d2145',bar:'#1e40af'},
 };
 let allArticles=[];
-
 function newsTagStyle(tag){return TAG_COLORS[tag]||{bg:'rgba(13,33,69,.07)',col:'#0d2145',bar:'#1e40af'};}
-
 function renderNewsCard(a){
   const ts=newsTagStyle(a.tag);
   return '<a class="news-card" href="'+a.link+'" target="_blank" rel="noopener" data-tag="'+a.tag+'">'+
@@ -308,7 +340,6 @@ function renderNewsCard(a){
     '<span class="news-read">Read <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:.6rem"></i></span>'+
     '</div></div></a>';
 }
-
 function filterNews(tag,btn){
   document.querySelectorAll('.news-tag-btn').forEach(function(b){b.classList.remove('on')});
   btn.classList.add('on');
@@ -318,7 +349,6 @@ function filterNews(tag,btn){
   if(filtered.length===0){grid.innerHTML='';empty.style.display='block';}
   else{empty.style.display='none';grid.innerHTML=filtered.map(renderNewsCard).join('');}
 }
-
 async function loadSwiftNews(){
   var grid=document.getElementById('newsGrid');
   try{
