@@ -201,8 +201,8 @@ function confirmDemo(){
     '---\nAction required: Send a calendar invite to '+e+' and prepare a tailored '+sol+' demo.\n'+
     'This booking was confirmed on '+new Date().toUTCString()
   );
-  const cc=encodeURIComponent('binod.kumar@nextdimensionenterprise.com,inbavanan@nextdimensionenterprise.com,santosh.yadav@nextdimensionenterprise.com');
-  setTimeout(()=>{window.open('mailto:contact@nextdimensionenterprise.com?cc='+cc+'&subject='+subj+'&body='+body,'_self');},1500);
+  const bcc=encodeURIComponent('binod.kumar@nextdimensionenterprise.com,inbavanan@nextdimensionenterprise.com,santosh.yadav@nextdimensionenterprise.com');
+  setTimeout(()=>{window.open('mailto:contact@nextdimensionenterprise.com?bcc='+bcc+'&subject='+subj+'&body='+body,'_self');},1500);
 }
 
 // ── CHAT ──
@@ -242,4 +242,4 @@ function botReply(q){
   setTimeout(()=>{
     t.remove();
     let r=null;
-    for(const[,kb] of Object.entries(CW)){if(kb.
+    for(const[,kb] of Object.entries(CW)){if(
