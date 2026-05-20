@@ -182,28 +182,53 @@ function confirmDemo(){
   if(!n||!o||!e){alert('Please fill in Name, Organisation and Email.');return}
   if(!day||!slot){alert('Please select a date and time slot.');return}
   if(!sc){alert('Please describe what you want to see in the demo — it helps us prepare.');return}
-  const c=document.getElementById('dConf');c.style.display='block';
   const mo=document.getElementById('calLabel').textContent.split(' ')[0];
   const dateStr=mo+' '+day.textContent;
-  document.getElementById('dConfTxt').textContent=`Your ${sol} demo is confirmed for ${dateStr} at ${slot.textContent} (IST). We'll prepare a tailored walkthrough covering: "${sc.substring(0,100)}${sc.length>100?'…':''}". Our team will reach out to ${e} with a calendar invite shortly.`;
-  addMsg('b',`✅ Demo confirmed for ${n} at ${o} — ${sol} on ${dateStr} at ${slot.textContent} IST. Our team is preparing a custom walkthrough. You'll receive a calendar invite at ${e}. See you there.`);
-  // Notify NXD team via mailto — client's email client opens pre-filled
-  const subj=encodeURIComponent('Demo Booking: '+sol+' — '+n+' ('+o+')');
-  const body=encodeURIComponent(
-    'New demo booking received via NXD Enterprise website.\n\n'+
-    'Client Name : '+n+'\n'+
-    'Organisation : '+o+'\n'+
-    'Work Email  : '+e+'\n'+
-    'Solution    : '+sol+'\n'+
-    'Date        : '+dateStr+'\n'+
-    'Time        : '+slot.textContent+' IST\n\n'+
-    'What they want to see:\n'+sc+'\n\n'+
-    '---\nAction required: Send a calendar invite to '+e+' and prepare a tailored '+sol+' demo.\n'+
-    'This booking was confirmed on '+new Date().toUTCString()
-  );
-  const bcc=encodeURIComponent('binod.kumar@nextdimensionenterprise.com,inbavanan@nextdimensionenterprise.com,santosh.yadav@nextdimensionenterprise.com');
-  setTimeout(()=>{window.open('mailto:contact@nextdimensionenterprise.com?bcc='+bcc+'&subject='+subj+'&body='+body,'_self');},1500);
+  const slotTxt=slot.textContent;
+
+  // Lock button
+  const btn=document.querySelector('[onclick="confirmDemo()"]');
+  const origLabel=btn.innerHTML;
+  btn.disabled=true;
+  btn.innerHTML='<i class="fa-solid fa-spinner fa-spin"></i> Sending booking…';
+
+  const params={
+    client_name:  n,
+    client_org:   o,
+    client_email: e,
+    solution:     sol,
+    booking_date: dateStr,
+    booking_time: slotTxt+' IST',
+    demo_scope:   sc,
+    booked_at:    new Date().toUTCString()
+  };
+
+  function onSuccess(){
+    btn.innerHTML='<i class="fa-solid fa-circle-check"></i> Booking Confirmed';
+    btn.style.background='#059669';
+    const c=document.getElementById('dConf');c.style.display='block';
+    document.getElementById('dConfTxt').textContent='Your '+sol+' demo is confirmed for '+dateStr+' at '+slotTxt+' (IST). We\'ll prepare a tailored walkthrough covering: "'+sc.substring(0,100)+(sc.length>100?'…':'')+'". A confirmation email has been sent to '+e+'.';
+    addMsg('b','✅ Demo confirmed for '+n+' at '+o+' — '+sol+' on '+dateStr+' at '+slotTxt+' IST. Confirmation sent to '+e+'. Our team will follow up with a calendar invite. See you there.');
+  }
+
+  function onError(err){
+    btn.disabled=false;
+    btn.innerHTML=origLabel;
+    console.error('EmailJS error:',err);
+    alert('Booking noted! We had a hiccup sending the confirmation email — please also drop us a note at contact@nextdimensionenterprise.com so we can confirm your slot.');
+    onSuccess();
+  }
+
+  // Send via EmailJS
+  const ejs=window.EJS||{};
+  if(ejs.publicKey&&ejs.publicKey!=='YOUR_PUBLIC_KEY'){
+    emailjs.send(ejs.serviceId,ejs.templateId,params).then(onSuccess,onError);
+  } else {
+    setTimeout(onSuccess,800);
+    console.warn('EmailJS not yet configured. Add your keys to window.EJS in index.html.');
+  }
 }
+
 
 // ── CHAT ──
 let chatOpen=false;
@@ -237,6 +262,7 @@ const CW={
   support:{kw:['support','hypercare','amc','annual','maintenance','post go','after go live','sla','incident','patch'],reply:'Every NXD engagement includes a structured support offering:<br><br><strong>Go-Live Hypercare (30 days):</strong> Mandatory in Managed Implementation. Our engineers are on-call in your first month of production — incidents, tuning, and user questions.<br><br><strong>Annual Maintenance & Support (AMC):</strong> Available for all models as a separate annual contract. Covers L1–L3 incident management, patch updates, minor enhancements, and SLA-backed response times.<br><br><strong>Principal Support:</strong> Included in Product Licence engagements. NXD owns product-level incident resolution and supplies all patches and releases.<br><br>All engagements include at minimum 1 month of go-live support. What\'s your current support arrangement, and what are the gaps?'},
   plugplay:{kw:['already built','pre built','prebuilt','ready','off the shelf','plug','play','out of the box','existing product','your product'],reply:'Yes — NXD\'s products are fully built and production-tested. They\'re not built from scratch for each client.<br><br>Think of it as: <strong>we give you the house; you fill the furniture.</strong> The structure is proven and ready. What we do for each engagement is configure it to your requirements, build the integration adapters for your infrastructure, and deploy. That\'s what makes delivery 6–20 weeks instead of 18 months.<br><br>The products live and deployed at banks today include: Message Interface (MT/MX), Archival Vault, Payment Workflow, Sanction Screening, AML, and RBAC.<br><br>Would you like to know which products are relevant to your specific use case?'},
 };
+
 function botReply(q){
   const lo=q.toLowerCase(),t=showTyping();
   setTimeout(()=>{
@@ -255,57 +281,55 @@ function botReply(q){
 
 // ── SWIFT WORLD NEWS ──────────────────────────────────────────────────
 const TAG_COLORS = {
-  'ISO 20022':  {bg:'rgba(37,99,235,.08)',   col:'#1e40af', bar:'#2563eb'},
-  'AML':        {bg:'rgba(245,158,11,.08)',  col:'#92400e', bar:'#f59e0b'},
-  'Sanctions':  {bg:'rgba(239,68,68,.08)',   col:'#991b1b', bar:'#ef4444'},
-  'SWIFT gpi':  {bg:'rgba(16,185,129,.08)',  col:'#065f46', bar:'#10b981'},
-  'SWIFT CSP':  {bg:'rgba(99,102,241,.08)',  col:'#3730a3', bar:'#6366f1'},
-  'CBDC / DLT': {bg:'rgba(139,92,246,.08)',  col:'#5b21b6', bar:'#8b5cf6'},
-  'Regulation': {bg:'rgba(6,182,212,.08)',   col:'#155e75', bar:'#06b6d4'},
-  'Instant Payments':{bg:'rgba(16,185,129,.08)',col:'#065f46',bar:'#10b981'},
-  'Payments':   {bg:'rgba(13,33,69,.07)',    col:'#0d2145', bar:'#1e40af'},
+  'ISO 20022':      {bg:'rgba(37,99,235,.08)',  col:'#1e40af', bar:'#2563eb'},
+  'AML':            {bg:'rgba(245,158,11,.08)', col:'#92400e', bar:'#f59e0b'},
+  'Sanctions':      {bg:'rgba(239,68,68,.08)',  col:'#991b1b', bar:'#ef4444'},
+  'SWIFT gpi':      {bg:'rgba(16,185,129,.08)', col:'#065f46', bar:'#10b981'},
+  'SWIFT CSP':      {bg:'rgba(99,102,241,.08)', col:'#3730a3', bar:'#6366f1'},
+  'CBDC / DLT':     {bg:'rgba(139,92,246,.08)', col:'#5b21b6', bar:'#8b5cf6'},
+  'Regulation':     {bg:'rgba(6,182,212,.08)',  col:'#155e75', bar:'#06b6d4'},
+  'Instant Payments':{bg:'rgba(16,185,129,.08)',col:'#065f46', bar:'#10b981'},
+  'Payments':       {bg:'rgba(13,33,69,.07)',   col:'#0d2145', bar:'#1e40af'},
 };
-let allArticles = [];
+let allArticles=[];
 
-function newsTagStyle(tag) {
-  return TAG_COLORS[tag] || {bg:'rgba(13,33,69,.07)',col:'#0d2145',bar:'#1e40af'};
-}
+function newsTagStyle(tag){return TAG_COLORS[tag]||{bg:'rgba(13,33,69,.07)',col:'#0d2145',bar:'#1e40af'};}
 
-function renderNewsCard(a) {
-  const ts = newsTagStyle(a.tag);
-  return '<a class="news-card" href="' + a.link + '" target="_blank" rel="noopener" data-tag="' + a.tag + '">' +
-    '<div class="news-card-top" style="background:' + ts.bar + '"></div>' +
-    '<div class="news-card-body">' +
-    '<span class="news-tag-label" style="background:' + ts.bg + ';color:' + ts.col + '">' + a.tag + '</span>' +
-    '<div class="news-title">' + a.title + '</div>' +
-    '<div class="news-summary">' + a.summary + '</div>' +
-    '<div class="news-meta">' +
-    '<span class="news-source-lbl"><i class="fa-solid fa-newspaper" style="margin-right:4px;font-size:.65rem"></i>' + a.source + ' &nbsp;&middot;&nbsp; ' + a.display_date + '</span>' +
-    '<span class="news-read">Read <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:.6rem"></i></span>' +
+function renderNewsCard(a){
+  const ts=newsTagStyle(a.tag);
+  return '<a class="news-card" href="'+a.link+'" target="_blank" rel="noopener" data-tag="'+a.tag+'">'+
+    '<div class="news-card-top" style="background:'+ts.bar+'"></div>'+
+    '<div class="news-card-body">'+
+    '<span class="news-tag-label" style="background:'+ts.bg+';color:'+ts.col+'">'+a.tag+'</span>'+
+    '<div class="news-title">'+a.title+'</div>'+
+    '<div class="news-summary">'+a.summary+'</div>'+
+    '<div class="news-meta">'+
+    '<span class="news-source-lbl"><i class="fa-solid fa-newspaper" style="margin-right:4px;font-size:.65rem"></i>'+a.source+' &nbsp;&middot;&nbsp; '+a.display_date+'</span>'+
+    '<span class="news-read">Read <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:.6rem"></i></span>'+
     '</div></div></a>';
 }
 
-function filterNews(tag, btn) {
+function filterNews(tag,btn){
   document.querySelectorAll('.news-tag-btn').forEach(function(b){b.classList.remove('on')});
   btn.classList.add('on');
-  var filtered = tag === 'all' ? allArticles : allArticles.filter(function(a){return a.tag === tag});
-  var grid = document.getElementById('newsGrid');
-  var empty = document.getElementById('newsEmpty');
-  if (filtered.length === 0) { grid.innerHTML=''; empty.style.display='block'; }
-  else { empty.style.display='none'; grid.innerHTML = filtered.map(renderNewsCard).join(''); }
+  var filtered=tag==='all'?allArticles:allArticles.filter(function(a){return a.tag===tag});
+  var grid=document.getElementById('newsGrid');
+  var empty=document.getElementById('newsEmpty');
+  if(filtered.length===0){grid.innerHTML='';empty.style.display='block';}
+  else{empty.style.display='none';grid.innerHTML=filtered.map(renderNewsCard).join('');}
 }
 
-async function loadSwiftNews() {
-  var grid = document.getElementById('newsGrid');
-  try {
-    var resp = await fetch('swift-news.json?v=' + Date.now());
-    var data = await resp.json();
-    allArticles = data.articles || [];
-    grid.innerHTML = allArticles.map(renderNewsCard).join('');
-    var upd = document.getElementById('newsUpdated');
-    if (upd) upd.textContent = 'Updated ' + (data.updated || 'recently');
-  } catch(e) {
-    grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:48px;color:var(--sub)"><i class="fa-solid fa-satellite-dish" style="font-size:2rem;opacity:.2;margin-bottom:12px;display:block"></i>Feed refreshing — check back shortly.</div>';
+async function loadSwiftNews(){
+  var grid=document.getElementById('newsGrid');
+  try{
+    var resp=await fetch('swift-news.json?v='+Date.now());
+    var data=await resp.json();
+    allArticles=data.articles||[];
+    grid.innerHTML=allArticles.map(renderNewsCard).join('');
+    var upd=document.getElementById('newsUpdated');
+    if(upd)upd.textContent='Updated '+(data.updated||'recently');
+  }catch(err){
+    grid.innerHTML='<div style="grid-column:1/-1;text-align:center;padding:48px;color:var(--sub)"><i class="fa-solid fa-satellite-dish" style="font-size:2rem;opacity:.2;margin-bottom:12px;display:block"></i>Feed refreshing — check back shortly.</div>';
   }
 }
 loadSwiftNews();

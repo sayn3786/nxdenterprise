@@ -15,6 +15,29 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <link rel="stylesheet" href="assets/css/style.css">
+<!-- EmailJS SDK -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>
+// ── EMAILJS CONFIG ─────────────────────────────────────────────────────────
+// Setup steps (one-time, 5 min):
+//   1. Go to https://www.emailjs.com → sign up free (200 emails/month)
+//   2. Email Services → Add Service → Custom SMTP → enter contact@nextdimensionenterprise.com SMTP details
+//   3. Email Templates → Create Template → use variables below, set BCC in template settings
+//   4. Account → API Keys → copy Public Key
+// Then replace the three placeholder strings below:
+window.EJS = {
+  publicKey:  'YOUR_PUBLIC_KEY',    // Account → API Keys
+  serviceId:  'YOUR_SERVICE_ID',    // Email Services → your service ID
+  templateId: 'YOUR_TEMPLATE_ID'   // Email Templates → your template ID
+};
+// Template variables to use in EmailJS dashboard:
+//  {{client_name}}  {{client_org}}  {{client_email}}
+//  {{solution}}  {{booking_date}}  {{booking_time}}  {{demo_scope}}  {{booked_at}}
+// Template "To email" field: {{client_email}}
+// Template BCC: binod.kumar@nextdimensionenterprise.com,inbavanan@nextdimensionenterprise.com,santosh.yadav@nextdimensionenterprise.com
+// Template From name: NXD Enterprise | Template Reply-To: contact@nextdimensionenterprise.com
+emailjs.init({ publicKey: window.EJS.publicKey });
+</script>
 </head>
 <body>
 
@@ -1040,37 +1063,4 @@ function renderNewsCard(a) {
     '<div class="news-title">' + a.title + '</div>' +
     '<div class="news-summary">' + a.summary + '</div>' +
     '<div class="news-meta">' +
-    '<span class="news-source-lbl"><i class="fa-solid fa-newspaper" style="margin-right:4px;font-size:.65rem"></i>' + a.source + ' &nbsp;&middot;&nbsp; ' + a.display_date + '</span>' +
-    '<span class="news-read">Read <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:.6rem"></i></span>' +
-    '</div></div></a>';
-}
-
-function filterNews(tag, btn) {
-  document.querySelectorAll('.news-tag-btn').forEach(function(b){b.classList.remove('on')});
-  btn.classList.add('on');
-  var filtered = tag === 'all' ? allArticles : allArticles.filter(function(a){return a.tag === tag});
-  var grid = document.getElementById('newsGrid');
-  var empty = document.getElementById('newsEmpty');
-  if (filtered.length === 0) { grid.innerHTML=''; empty.style.display='block'; }
-  else { empty.style.display='none'; grid.innerHTML = filtered.map(renderNewsCard).join(''); }
-}
-
-async function loadSwiftNews() {
-  var grid = document.getElementById('newsGrid');
-  try {
-    var resp = await fetch('swift-news.json?v=' + Date.now());
-    var data = await resp.json();
-    allArticles = data.articles || [];
-    grid.innerHTML = allArticles.map(renderNewsCard).join('');
-    var upd = document.getElementById('newsUpdated');
-    if (upd) upd.textContent = 'Updated ' + (data.updated || 'recently');
-  } catch(e) {
-    grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:48px;color:var(--sub)"><i class="fa-solid fa-satellite-dish" style="font-size:2rem;opacity:.2;margin-bottom:12px;display:block"></i>Feed refreshing — check back shortly.</div>';
-  }
-}
-loadSwiftNews();
-
-</script>
-</body>
-</html>
-    
+    '<span class="news-source-lbl"><i class="fa-solid fa-newspaper" style="margin-right:4px;font-size:.65rem"></i>' + a
