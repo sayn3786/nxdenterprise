@@ -210,7 +210,7 @@ function confirmDemo(){
       '. Our team will follow up with a calendar invite. See you there.');
   }
 
-  emailjs.send('service_vr3q4ms','template_hsvgtwt',{
+  const params={
     to_name: n,
     email: e,
     organisation: o,
@@ -219,8 +219,17 @@ function confirmDemo(){
     time: slotTxt+' IST',
     scope: sc.substring(0,300),
     booked_at: new Date().toUTCString()
+  };
+
+  emailjs.send('service_vr3q4ms','template_hsvgtwt',params)
+  .then(function(){
+    // Also notify the NXD team via contact@
+    emailjs.send('service_vr3q4ms','template_hsvgtwt',Object.assign({},params,{
+      to_name: 'NXD Team',
+      email: 'contact@nextdimensionenterprise.com'
+    })).catch(function(err){console.warn('Team notify:',err);});
+    showConfirm();
   })
-  .then(function(){showConfirm();})
   .catch(function(err){
     console.error('EmailJS error:',err);
     btn.disabled=false;btn.innerHTML=origLabel;
