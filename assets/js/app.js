@@ -202,28 +202,30 @@ function confirmDemo(){
     document.getElementById('dConf').style.display='block';
     document.getElementById('dConfTxt').textContent=
       'Your '+sol+' demo is confirmed for '+dateStr+' at '+slotTxt+
-      ' (IST). We\'ll prepare a tailored walkthrough covering: "'+
+      ' (SGT). We\'ll prepare a tailored walkthrough covering: "'+
       sc.substring(0,100)+(sc.length>100?'…':'')+
       '". A confirmation email has been sent to '+e+'.';
     addMsg('b','✅ Demo confirmed for '+n+' at '+o+' — '+sol+' on '+dateStr+
-      ' at '+slotTxt+' IST. Confirmation sent to '+e+
+      ' at '+slotTxt+' SGT. Confirmation sent to '+e+
       '. Our team will follow up with a calendar invite. See you there.');
   }
 
   const params={
     to_name: n,
     email: e,
+    client_name: n,
+    client_email: e,
     organisation: o,
     solution: sol,
     date: dateStr,
-    time: slotTxt+' IST',
+    time: slotTxt+' SGT',
     scope: sc.substring(0,300),
     booked_at: new Date().toUTCString()
   };
 
   emailjs.send('service_vr3q4ms','template_hsvgtwt',params)
   .then(function(){
-    // Also notify the NXD team via contact@
+    // Notify NXD team via contact@ with full client details
     emailjs.send('service_vr3q4ms','template_hsvgtwt',Object.assign({},params,{
       to_name: 'NXD Team',
       email: 'contact@nextdimensionenterprise.com'
