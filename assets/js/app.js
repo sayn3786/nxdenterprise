@@ -210,70 +210,24 @@ function confirmDemo(){
       '. Our team will follow up with a calendar invite. See you there.');
   }
 
-  const KEY=window.W3F_KEY||'';
-  if(!KEY||KEY==='YOUR_ACCESS_KEY'){
-    // Not yet configured — show on-page confirmation
-    setTimeout(showConfirm,800);
-    console.warn('Web3Forms key not set. Get yours free at https://web3forms.com');
-    return;
-  }
-
-  // Build email body
-  const body=
-    'New demo booking via NXD Enterprise website\n\n'+
-    'Client Name  : '+n+'\n'+
-    'Organisation : '+o+'\n'+
-    'Work Email   : '+e+'\n'+
-    'Solution     : '+sol+'\n'+
-    'Date         : '+dateStr+'\n'+
-    'Time         : '+slotTxt+' IST\n\n'+
-    'What they want to see:\n'+sc+'\n\n'+
-    'Booked at    : '+new Date().toUTCString()+'\n'+
-    'Action: Send calendar invite to '+e+' and prepare '+sol+' demo.';
-
-  // Send via Web3Forms — server-side, no browser pop-up
-  fetch('https://api.web3forms.com/submit',{
-    method:'POST',
-    headers:{'Content-Type':'application/json','Accept':'application/json'},
-    body:JSON.stringify({
-      access_key: KEY,
-      subject: 'Demo Booking: '+sol+' — '+n+' ('+o+')',
-      from_name: 'NXD Enterprise Website',
-      replyto: e,
-      email: e,
-      cc: 'binod.kumar@nextdimensionenterprise.com,inbavanan@nextdimensionenterprise.com,santosh.yadav@nextdimensionenterprise.com',
-      message: body,
-      // Extra fields shown in Web3Forms dashboard
-      client_name: n,
-      organisation: o,
-      client_email: e,
-      solution: sol,
-      date: dateStr,
-      time: slotTxt+' IST'
-    })
+  emailjs.send('service_vr3q4ms','template_hsvgtwt',{
+    to_name: n,
+    email: e,
+    organisation: o,
+    solution: sol,
+    date: dateStr,
+    time: slotTxt+' IST',
+    scope: sc.substring(0,300),
+    booked_at: new Date().toUTCString()
   })
-  .then(r=>r.json())
-  .then(data=>{
-    if(data.success){
-      // Send client confirmation via EmailJS
-      emailjs.send('service_vr3q4ms','template_hsvgtwt',{
-        to_name: n,
-        email: e,
-        solution: sol,
-        date: dateStr,
-        time: slotTxt+' IST'
-      }).catch(function(err){console.warn('EmailJS:',err);});
-      showConfirm();
-    }else{throw new Error(data.message||'Send failed');}
-  })
-  .catch(err=>{
-    console.error('Web3Forms error:',err);
+  .then(function(){showConfirm();})
+  .catch(function(err){
+    console.error('EmailJS error:',err);
     btn.disabled=false;btn.innerHTML=origLabel;
     alert('Booking noted — but the confirmation email had a hiccup. Please also email contact@nextdimensionenterprise.com directly to lock in your slot.');
     showConfirm();
   });
 }
-
 
 // ── CHAT ──
 let chatOpen=false;
