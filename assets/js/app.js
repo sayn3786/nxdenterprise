@@ -240,6 +240,7 @@ function confirmDemo(){
       subject: 'Demo Booking: '+sol+' — '+n+' ('+o+')',
       from_name: 'NXD Enterprise Website',
       replyto: e,
+      cc: 'binod.kumar@nextdimensionenterprise.com,inbavanan@nextdimensionenterprise.com,santosh.yadav@nextdimensionenterprise.com',
       message: body,
       // Extra fields shown in Web3Forms dashboard
       client_name: n,
