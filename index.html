@@ -15,19 +15,11 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <link rel="stylesheet" href="assets/css/style.css">
-<!-- Web3Forms — no SDK needed, pure fetch() -->
-<script>
-// ── WEB3FORMS CONFIG ───────────────────────────────────────────────────────
-// One-time setup (2 min, no email activation needed):
-//   1. Go to https://web3forms.com
-//   2. Enter ysantosh3786@gmail.com → click Get Access Key
-//   3. Copy the key from the email that arrives in your Gmail
-//   4. Paste it below replacing YOUR_ACCESS_KEY
-window.W3F_KEY = '495891f9-7b14-4fb5-9b1f-2c98c9d84de4';
-// That's it. Emails will arrive at ysantosh3786@gmail.com.
-// To also notify the team: set up a Gmail filter or forward rule to
-// forward "Demo Booking:" subject emails to binod.kumar@, inbavanan@, santosh.yadav@
-</script>
+<!-- Web3Forms — team notification -->
+<script>window.W3F_KEY = '495891f9-7b14-4fb5-9b1f-2c98c9d84de4';</script>
+<!-- EmailJS — client confirmation email -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>emailjs.init({publicKey:'NBGCHzFjgYtKnH5YZ'});</script>
 </head>
 <body>
 
@@ -1065,4 +1057,24 @@ function filterNews(tag, btn) {
   var grid = document.getElementById('newsGrid');
   var empty = document.getElementById('newsEmpty');
   if (filtered.length === 0) { grid.innerHTML=''; empty.style.display='block'; }
-  else { empty.style.display='none'; grid.
+  else { empty.style.display='none'; grid.innerHTML = filtered.map(renderNewsCard).join(''); }
+}
+
+async function loadSwiftNews() {
+  var grid = document.getElementById('newsGrid');
+  try {
+    var resp = await fetch('swift-news.json?v=' + Date.now());
+    var data = await resp.json();
+    allArticles = data.articles || [];
+    grid.innerHTML = allArticles.map(renderNewsCard).join('');
+    var upd = document.getElementById('newsUpdated');
+    if (upd) upd.textContent = 'Updated ' + (data.updated || 'recently');
+  } catch(e) {
+    grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:48px;color:var(--sub)"><i class="fa-solid fa-satellite-dish" style="font-size:2rem;opacity:.2;margin-bottom:12px;display:block"></i>Feed refreshing — check back shortly.</div>';
+  }
+}
+loadSwiftNews();
+
+</script>
+</body>
+</html>

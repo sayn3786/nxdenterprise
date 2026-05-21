@@ -254,8 +254,17 @@ function confirmDemo(){
   })
   .then(r=>r.json())
   .then(data=>{
-    if(data.success){showConfirm();}
-    else{throw new Error(data.message||'Send failed');}
+    if(data.success){
+      // Send client confirmation via EmailJS
+      emailjs.send('service_vr3q4ms','template_hsvgtwt',{
+        to_name: n,
+        email: e,
+        solution: sol,
+        date: dateStr,
+        time: slotTxt+' IST'
+      }).catch(function(err){console.warn('EmailJS:',err);});
+      showConfirm();
+    }else{throw new Error(data.message||'Send failed');}
   })
   .catch(err=>{
     console.error('Web3Forms error:',err);
