@@ -1,8 +1,18 @@
 {
-  "updated": "24 May 2026, 08:29 UTC",
-  "count": 2,
+  "updated": "25 May 2026, 10:05 UTC",
+  "count": 3,
   "source_credit": "swift.com + industry feeds",
   "articles": [
+    {
+      "title": "Europe’s Banks Get a Real-Time Reality Check",
+      "summary": "Europe’s instant payments agenda has crossed a threshold. The rails are largely in place. Now institutions face the harder task of rewiring everything around them. That’s the central finding of the la...",
+      "link": "https://www.pymnts.com/real-time-payments/2026/europes-banks-get-a-real-time-reality-check/",
+      "source": "PYMNTS",
+      "color": "#0d2145",
+      "tag": "Payments",
+      "published": "2026-05-25T08:00:29Z",
+      "display_date": "25 May 2026"
+    },
     {
       "title": "Arabica Coffee Prices Hit Record on U.S., Colombia Tariff Spat",
       "summary": "Arabica coffee prices hit a record level, as traders digested the withdrawal of President Trump’s threats to impose tariffs and economic sanctions on Colombia.",
