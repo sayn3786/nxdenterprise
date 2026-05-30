@@ -1,8 +1,28 @@
 {
-  "updated": "29 May 2026, 09:53 UTC",
-  "count": 2,
+  "updated": "30 May 2026, 08:27 UTC",
+  "count": 4,
   "source_credit": "swift.com + industry feeds",
   "articles": [
+    {
+      "title": "As Cross-Border Payments Become Infrastructure, What Happens Next?",
+      "summary": "Cross-border payments have long carried a premium because moving money across jurisdictions has been slow, fragmented and operationally complex. But a growing share of global commerce now relies on pa...",
+      "link": "https://www.pymnts.com/news/cross-border-commerce/cross-border-payments/2026/as-cross-border-payments-become-infrastructure-what-happens-next/",
+      "source": "PYMNTS",
+      "color": "#0d2145",
+      "tag": "Payments",
+      "published": "2026-05-29T23:28:34Z",
+      "display_date": "29 May 2026"
+    },
+    {
+      "title": "Stablecoin Settlement Is Here, but Seamless Off-Chain Money Movement Is Not",
+      "summary": "The stablecoin industry has spent years trying to prove one thing above all else: that blockchain-based money can move faster, cheaper and more efficiently than the financial infrastructure it hopes t...",
+      "link": "https://www.pymnts.com/cryptocurrency/2026/stablecoin-settlement-is-here-but-seamless-off-chain-money-movement-is-not/",
+      "source": "PYMNTS",
+      "color": "#0d2145",
+      "tag": "AML",
+      "published": "2026-05-29T17:49:27Z",
+      "display_date": "29 May 2026"
+    },
     {
       "title": "Arabica Coffee Prices Hit Record on U.S., Colombia Tariff Spat",
       "summary": "Arabica coffee prices hit a record level, as traders digested the withdrawal of President Trump’s threats to impose tariffs and economic sanctions on Colombia.",
