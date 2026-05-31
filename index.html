@@ -19,6 +19,10 @@
 /* ── TAB PANELS ── */
 .tab-panel{display:none!important}
 .tab-panel.active{display:block!important}
+/* ── OUTLINE BUTTON FOR LIGHT BACKGROUNDS ── */
+.btn-outline{background:transparent;color:var(--ink);border:1.5px solid var(--border);border-radius:var(--rs);padding:9px 18px;font-size:.84rem;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;display:inline-flex;align-items:center;gap:7px;transition:all .2s}
+.btn-outline:hover{border-color:var(--vivid);color:var(--vivid)}
+.btn-outline.btn-lg{padding:13px 28px;font-size:.95rem}
 /* ── NAV TAB LINKS ── */
 .nav-tab{position:relative;padding:8px 14px!important;color:rgba(255,255,255,.55)!important;font-weight:600!important;border-radius:0!important;transition:color .2s!important}
 .nav-tab::after{content:'';position:absolute;bottom:-8px;left:14px;right:14px;height:2px;background:#00C9A7;border-radius:2px;transform:scaleX(0);transition:transform .2s}
@@ -274,7 +278,7 @@
         </div>
         <div class="sol-actions">
           <button class="btn btn-ink" onclick="go('analyser');setTimeout(()=>fillAnalyser('We need to migrate from SWIFT MT103/202 messages to ISO 20022 MX pacs.008/009 format. We require parallel MT/MX coexistence during cutover and integration with our core banking system.'),400)"><i class="fa-solid fa-calculator"></i> Get Estimate</button>
-          <button class="btn btn-out" onclick="goTool('demo')"><i class="fa-solid fa-play"></i> Live Demo</button>
+          <button class="btn-outline" onclick="goTool('demo')"><i class="fa-solid fa-play"></i> Live Demo</button>
         </div>
       </div>
       <div class="sol-right">
@@ -299,7 +303,7 @@
         </div>
         <div class="sol-actions">
           <button class="btn btn-ink" onclick="go('analyser');setTimeout(()=>fillAnalyser('We need real-time OFAC, UN and EU sanctions screening for all cross-border SWIFT payments plus ML-based AML transaction monitoring with automated SAR/STR reporting.'),400)"><i class="fa-solid fa-calculator"></i> Get Estimate</button>
-          <button class="btn btn-out" onclick="goTool('demo')"><i class="fa-solid fa-play"></i> Live Demo</button>
+          <button class="btn-outline" onclick="goTool('demo')"><i class="fa-solid fa-play"></i> Live Demo</button>
         </div>
       </div>
       <div class="sol-right">
@@ -324,7 +328,7 @@
         </div>
         <div class="sol-actions">
           <button class="btn btn-ink" onclick="go('analyser');setTimeout(()=>fillAnalyser('We need tamper-proof archival of SWIFT MT and MX messages for 10 years to meet RBI/regulatory requirements, with legal discovery support and sub-second query across billions of records.'),400)"><i class="fa-solid fa-calculator"></i> Get Estimate</button>
-          <button class="btn btn-out" onclick="goTool('demo')"><i class="fa-solid fa-play"></i> Live Demo</button>
+          <button class="btn-outline" onclick="goTool('demo')"><i class="fa-solid fa-play"></i> Live Demo</button>
         </div>
       </div>
       <div class="sol-right">
@@ -348,7 +352,7 @@
         </div>
         <div class="sol-actions">
           <button class="btn btn-ink" onclick="go('analyser');setTimeout(()=>fillAnalyser('We need a unified STP orchestration layer across RTGS and instant payment rails with visual workflow designer, exception management, and maker-checker approval flows.'),400)"><i class="fa-solid fa-calculator"></i> Get Estimate</button>
-          <button class="btn btn-out" onclick="goTool('demo')"><i class="fa-solid fa-play"></i> Live Demo</button>
+          <button class="btn-outline" onclick="goTool('demo')"><i class="fa-solid fa-play"></i> Live Demo</button>
         </div>
       </div>
       <div class="sol-right">
@@ -397,8 +401,8 @@
           <div class="sol-out"><div class="sol-out-dot"><i class="fa-solid fa-check"></i></div><span>CBDC integration design, having worked with central bank frameworks across Asia and the Middle East</span></div>
         </div>
         <div class="sol-actions">
-          <button class="btn btn-ink" onclick="go('bespoke')"><i class="fa-solid fa-comments"></i> Discuss Your Requirement</button>
-          <button class="btn btn-out" onclick="goTool('demo')"><i class="fa-solid fa-play"></i> Live Demo</button>
+          <button class="btn btn-ink" onclick="openChat()"><i class="fa-solid fa-comments"></i> Discuss Your Requirement</button>
+          <button class="btn-outline" onclick="goTool('demo')"><i class="fa-solid fa-play"></i> Live Demo</button>
         </div>
       </div>
       <div class="sol-right">
