@@ -28,19 +28,15 @@
       <img src="assets/images/logo.svg" alt="NXD Enterprise" class="brand-logo">
     </a>
     <div class="nav-links">
-      <a href="#pain">Challenges</a>
-      <a href="#why">Why NXD</a>
-      <a href="#solutions">Solutions</a>
-      <a href="#models">How We Work</a>
-      <a href="#swift-world">SWIFT World</a>
-      <a href="#leadership">Leadership</a>
-      <a href="#analyser">Estimate</a>
-      <a href="#proposal">Proposal</a>
-      <a href="#demo">Demo</a>
+      <a href="#" onclick="switchTab('overview');return false">Why NXD</a>
+      <a href="#" onclick="switchTab('solutions');return false">Solutions</a>
+      <a href="#" onclick="switchTab('tools');return false">Client Tools</a>
+      <a href="#" onclick="switchTab('intelligence');return false">Intelligence</a>
+      <a href="#" onclick="switchTab('team');return false">Team</a>
     </div>
     <div class="nav-actions">
       <button class="btn btn-out btn-sm" onclick="openChat()"><i class="fa-solid fa-robot"></i> Ask Anything</button>
-      <button class="btn btn-ink btn-sm" onclick="go('demo')"><i class="fa-solid fa-calendar-check"></i> Book Demo</button>
+      <button class="btn btn-ink btn-sm" onclick="goTool('demo')"><i class="fa-solid fa-calendar-check"></i> Book Demo</button>
     </div>
   </div>
 </nav>
@@ -57,8 +53,8 @@
         <h1>Your bank is unique.<br>Your payment solution<br>should be <em>built that way.</em></h1>
         <p class="hero-sub">Most vendors sell you a product and ask your bank to fit around it. We start with your infrastructure, your flows, your regulatory mandate — and build exactly what you need. Nothing more. Nothing less.</p>
         <div class="hero-actions">
-          <button class="btn btn-viv btn-lg" onclick="go('analyser')"><i class="fa-solid fa-wand-magic-sparkles"></i> Get My Estimate</button>
-          <button class="btn btn-lg" style="background:rgba(255,255,255,.08);color:#fff;border:1px solid rgba(255,255,255,.15)" onclick="go('solutions')"><i class="fa-solid fa-arrow-right"></i> See Solutions</button>
+          <button class="btn btn-viv btn-lg" onclick="goTool('analyser')"><i class="fa-solid fa-wand-magic-sparkles"></i> Get My Estimate</button>
+          <button class="btn btn-lg" style="background:rgba(255,255,255,.08);color:#fff;border:1px solid rgba(255,255,255,.15)" onclick="goSol('solutions')"><i class="fa-solid fa-arrow-right"></i> See Solutions</button>
         </div>
         <div class="hero-proof">
           <div class="hp-item"><i class="fa-solid fa-certificate"></i> SWIFT Certified</div>
@@ -89,7 +85,7 @@
             <div class="hc-row match"><div class="hc-icon"><i class="fa-solid fa-check"></i></div><div>Full delivery: 22 weeks. Not 18 months.</div></div>
           </div>
           <div class="hc-btn-row">
-            <button class="btn btn-viv btn-sm" onclick="go('analyser')"><i class="fa-solid fa-calculator"></i> Estimate My Project</button>
+            <button class="btn btn-viv btn-sm" onclick="goTool('analyser')"><i class="fa-solid fa-calculator"></i> Estimate My Project</button>
             <button class="btn btn-out btn-sm" onclick="openChat()"><i class="fa-solid fa-comments"></i> Talk to Us</button>
           </div>
         </div>
@@ -119,6 +115,20 @@
   </div>
 </div>
 
+<!-- ── MAIN TAB SHELL ── -->
+<div id="main-tabs">
+<div id="tab-nav-bar" style="position:sticky;top:64px;z-index:900;background:#0B1022;border-bottom:1px solid rgba(255,255,255,.08);overflow-x:auto;scrollbar-width:none">
+  <div style="display:flex;max-width:1160px;margin:0 auto;padding:0 24px">
+    <button class="tab-btn active" data-tab="overview" onclick="switchTab('overview')"><i class="fa-solid fa-chart-line"></i> Why NXD</button>
+    <button class="tab-btn" data-tab="solutions" onclick="switchTab('solutions')"><i class="fa-solid fa-cubes"></i> Solutions</button>
+    <button class="tab-btn" data-tab="tools" onclick="switchTab('tools')"><i class="fa-solid fa-wand-magic-sparkles"></i> Client Tools</button>
+    <button class="tab-btn" data-tab="intelligence" onclick="switchTab('intelligence')"><i class="fa-solid fa-satellite-dish"></i> Intelligence</button>
+    <button class="tab-btn" data-tab="team" onclick="switchTab('team')"><i class="fa-solid fa-users"></i> Our Team</button>
+  </div>
+</div>
+
+<!-- PANEL 1: WHY NXD -->
+<div class="tab-panel active" id="panel-overview">
 <!-- SOUND FAMILIAR? -->
 <section id="pain">
   <div class="wrap">
@@ -228,6 +238,10 @@
   </div>
 </section>
 
+</div><!-- /panel-overview -->
+
+<!-- PANEL 2: SOLUTIONS -->
+<div class="tab-panel" id="panel-solutions">
 <!-- SOLUTIONS -->
 <section id="solutions">
   <div class="wrap">
@@ -258,7 +272,7 @@
         </div>
         <div class="sol-actions">
           <button class="btn btn-ink" onclick="go('analyser');setTimeout(()=>fillAnalyser('We need to migrate from SWIFT MT103/202 messages to ISO 20022 MX pacs.008/009 format. We require parallel MT/MX coexistence during cutover and integration with our core banking system.'),400)"><i class="fa-solid fa-calculator"></i> Get Estimate</button>
-          <button class="btn btn-out" onclick="go('demo')"><i class="fa-solid fa-play"></i> Live Demo</button>
+          <button class="btn btn-out" onclick="goTool('demo')"><i class="fa-solid fa-play"></i> Live Demo</button>
         </div>
       </div>
       <div class="sol-right">
@@ -283,7 +297,7 @@
         </div>
         <div class="sol-actions">
           <button class="btn btn-ink" onclick="go('analyser');setTimeout(()=>fillAnalyser('We need real-time OFAC, UN and EU sanctions screening for all cross-border SWIFT payments plus ML-based AML transaction monitoring with automated SAR/STR reporting.'),400)"><i class="fa-solid fa-calculator"></i> Get Estimate</button>
-          <button class="btn btn-out" onclick="go('demo')"><i class="fa-solid fa-play"></i> Live Demo</button>
+          <button class="btn btn-out" onclick="goTool('demo')"><i class="fa-solid fa-play"></i> Live Demo</button>
         </div>
       </div>
       <div class="sol-right">
@@ -308,7 +322,7 @@
         </div>
         <div class="sol-actions">
           <button class="btn btn-ink" onclick="go('analyser');setTimeout(()=>fillAnalyser('We need tamper-proof archival of SWIFT MT and MX messages for 10 years to meet RBI/regulatory requirements, with legal discovery support and sub-second query across billions of records.'),400)"><i class="fa-solid fa-calculator"></i> Get Estimate</button>
-          <button class="btn btn-out" onclick="go('demo')"><i class="fa-solid fa-play"></i> Live Demo</button>
+          <button class="btn btn-out" onclick="goTool('demo')"><i class="fa-solid fa-play"></i> Live Demo</button>
         </div>
       </div>
       <div class="sol-right">
@@ -332,7 +346,7 @@
         </div>
         <div class="sol-actions">
           <button class="btn btn-ink" onclick="go('analyser');setTimeout(()=>fillAnalyser('We need a unified STP orchestration layer across RTGS and instant payment rails with visual workflow designer, exception management, and maker-checker approval flows.'),400)"><i class="fa-solid fa-calculator"></i> Get Estimate</button>
-          <button class="btn btn-out" onclick="go('demo')"><i class="fa-solid fa-play"></i> Live Demo</button>
+          <button class="btn btn-out" onclick="goTool('demo')"><i class="fa-solid fa-play"></i> Live Demo</button>
         </div>
       </div>
       <div class="sol-right">
@@ -357,7 +371,7 @@
         </div>
         <div class="sol-actions">
           <button class="btn btn-ink" onclick="go('analyser');setTimeout(()=>fillAnalyser('We need SWIFT connectivity review and CSP compliance support. We want to assess our current SWIFT infrastructure and implement gpi tracking.'),400)"><i class="fa-solid fa-calculator"></i> Get Estimate</button>
-          <button class="btn btn-out" onclick="go('demo')"><i class="fa-solid fa-play"></i> Discuss</button>
+          <button class="btn btn-out" onclick="goTool('demo')"><i class="fa-solid fa-play"></i> Discuss</button>
         </div>
       </div>
       <div class="sol-right">
@@ -382,7 +396,7 @@
         </div>
         <div class="sol-actions">
           <button class="btn btn-ink" onclick="go('bespoke')"><i class="fa-solid fa-comments"></i> Discuss Your Requirement</button>
-          <button class="btn btn-out" onclick="go('demo')"><i class="fa-solid fa-play"></i> Live Demo</button>
+          <button class="btn btn-out" onclick="goTool('demo')"><i class="fa-solid fa-play"></i> Live Demo</button>
         </div>
       </div>
       <div class="sol-right">
@@ -450,7 +464,7 @@
         </div>
 
         <div class="mcard-cta">
-          <button class="btn btn-out btn-sm" style="width:100%;justify-content:center;border-color:rgba(255,255,255,.2);color:rgba(255,255,255,.75)" onclick="go('demo')"><i class="fa-solid fa-calendar-check"></i> Discuss this model</button>
+          <button class="btn btn-out btn-sm" style="width:100%;justify-content:center;border-color:rgba(255,255,255,.2);color:rgba(255,255,255,.75)" onclick="goTool('demo')"><i class="fa-solid fa-calendar-check"></i> Discuss this model</button>
         </div>
       </div>
 
@@ -482,7 +496,7 @@
         </div>
 
         <div class="mcard-cta">
-          <button class="btn btn-viv btn-sm" style="width:100%;justify-content:center" onclick="go('analyser')"><i class="fa-solid fa-calculator"></i> Get Full Estimate</button>
+          <button class="btn btn-viv btn-sm" style="width:100%;justify-content:center" onclick="goTool('analyser')"><i class="fa-solid fa-calculator"></i> Get Full Estimate</button>
         </div>
       </div>
 
@@ -512,7 +526,7 @@
         </div>
 
         <div class="mcard-cta">
-          <button class="btn btn-out btn-sm" style="width:100%;justify-content:center;border-color:rgba(255,255,255,.2);color:rgba(255,255,255,.75)" onclick="go('demo')"><i class="fa-solid fa-comments"></i> Discuss resourcing</button>
+          <button class="btn btn-out btn-sm" style="width:100%;justify-content:center;border-color:rgba(255,255,255,.2);color:rgba(255,255,255,.75)" onclick="goTool('demo')"><i class="fa-solid fa-comments"></i> Discuss resourcing</button>
         </div>
       </div>
     </div>
@@ -559,6 +573,10 @@
   </div>
 </section>
 
+</div><!-- /panel-solutions -->
+
+<!-- PANEL 3: CLIENT TOOLS -->
+<div class="tab-panel" id="panel-tools">
 <!-- REQUIREMENT ANALYSER -->
 <section id="analyser">
   <div class="wrap">
@@ -625,7 +643,7 @@
           <div class="ar-sec"><div class="ar-lbl">Recommended Next Step</div><div class="ar-text" id="arNext">—</div>
             <div class="ar-btns" style="margin-top:10px">
               <button class="ar-btn ar-primary" onclick="go('proposal')"><i class="fa-solid fa-file-invoice-dollar"></i> Draft Proposal</button>
-              <button class="ar-btn ar-ghost" onclick="go('demo')"><i class="fa-solid fa-calendar-check"></i> Book Demo</button>
+              <button class="ar-btn ar-ghost" onclick="goTool('demo')"><i class="fa-solid fa-calendar-check"></i> Book Demo</button>
             </div>
           </div>
         </div>
@@ -710,7 +728,7 @@
           </div>
           <div style="display:flex;gap:10px;margin-top:16px;flex-wrap:wrap">
             <button class="btn btn-ink btn-sm" onclick="copyProposal()"><i class="fa-solid fa-copy"></i> Copy Text</button>
-            <button class="btn btn-out btn-sm" onclick="go('demo')"><i class="fa-solid fa-calendar-check"></i> Book Scoping Call</button>
+            <button class="btn btn-out btn-sm" onclick="goTool('demo')"><i class="fa-solid fa-calendar-check"></i> Book Scoping Call</button>
           </div>
         </div>
       </div>
@@ -782,6 +800,10 @@
 
 
 
+</div><!-- /panel-tools -->
+
+<!-- PANEL 4: INTELLIGENCE -->
+<div class="tab-panel" id="panel-intelligence">
 <!-- SWIFT WORLD NEWS -->
 <section id="swift-world" style="background:var(--surf);padding:88px 0">
   <div class="wrap">
@@ -837,6 +859,10 @@
 @media(max-width:640px){.news-grid{grid-template-columns:1fr}}
 </style>
 
+</div><!-- /panel-intelligence -->
+
+<!-- PANEL 5: TEAM -->
+<div class="tab-panel" id="panel-team">
 <!-- LEADERSHIP -->
 <section id="leadership" style="background:#07111f;padding:88px 0">
   <div class="wrap">
@@ -936,6 +962,9 @@
   </div>
 </section>
 
+</div><!-- /panel-team -->
+</div><!-- /main-tabs -->
+
 <!-- FOOTER -->
 <footer>
   <div class="wrap">
@@ -1013,6 +1042,18 @@
 </div>
 
 
+<style>
+/* ── TAB NAVIGATION ── */
+.tab-btn{display:inline-flex;align-items:center;gap:7px;padding:16px 20px;font-size:.82rem;font-weight:600;color:rgba(255,255,255,.45);cursor:pointer;border:none;border-bottom:2px solid transparent;background:none;font-family:'Inter',sans-serif;white-space:nowrap;transition:all .2s;letter-spacing:.01em}
+.tab-btn:hover{color:rgba(255,255,255,.85)}
+.tab-btn.active{color:var(--vivid);border-bottom-color:var(--vivid)}
+.tab-btn i{font-size:.8rem;opacity:.7}
+.tab-btn.active i{opacity:1}
+/* ── TAB PANELS ── */
+.tab-panel{display:none}
+.tab-panel.active{display:block;animation:tabFade .3s ease}
+@keyframes tabFade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+</style>
 <script src="assets/js/app.js"></script>
 <script>
 
@@ -1072,6 +1113,25 @@ async function loadSwiftNews() {
   }
 }
 loadSwiftNews();
+
+// ── TAB SWITCHING ──────────────────────────────────────────────────────
+function switchTab(id){
+  document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  var panel=document.getElementById('panel-'+id);
+  var btn=document.querySelector('[data-tab="'+id+'"]');
+  if(panel)panel.classList.add('active');
+  if(btn)btn.classList.add('active');
+  var bar=document.getElementById('tab-nav-bar');
+  if(bar){window.scrollTo({top:bar.offsetTop-64,behavior:'smooth'});}
+  // Re-run intersection observer on newly visible elements
+  document.querySelectorAll('#panel-'+id+' .fu:not(.vis)').forEach(function(el){obs.observe(el);});
+}
+// Hero CTAs — switch tab then scroll
+function goTool(section){switchTab('tools');setTimeout(function(){go(section);},350);}
+function goSol(section){switchTab('solutions');setTimeout(function(){go(section);},350);}
+// Init: show overview tab
+switchTab('overview');
 
 </script>
 </body>
