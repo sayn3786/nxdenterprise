@@ -1115,23 +1115,29 @@ async function loadSwiftNews() {
 loadSwiftNews();
 
 // ── TAB SWITCHING ──────────────────────────────────────────────────────
-function switchTab(id){
-  document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
-  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+function switchTab(id, noScroll){
+  document.querySelectorAll('.tab-panel').forEach(function(p){p.classList.remove('active');});
+  document.querySelectorAll('.tab-btn').forEach(function(b){b.classList.remove('active');});
   var panel=document.getElementById('panel-'+id);
   var btn=document.querySelector('[data-tab="'+id+'"]');
-  if(panel)panel.classList.add('active');
+  if(panel){
+    panel.classList.add('active');
+    // Reveal any animated elements that haven't fired yet
+    setTimeout(function(){
+      panel.querySelectorAll('.fu').forEach(function(el){el.classList.add('vis');});
+    },60);
+  }
   if(btn)btn.classList.add('active');
-  var bar=document.getElementById('tab-nav-bar');
-  if(bar){window.scrollTo({top:bar.offsetTop-64,behavior:'smooth'});}
-  // Re-run intersection observer on newly visible elements
-  document.querySelectorAll('#panel-'+id+' .fu:not(.vis)').forEach(function(el){obs.observe(el);});
+  if(!noScroll){
+    var bar=document.getElementById('tab-nav-bar');
+    if(bar)window.scrollTo({top:bar.offsetTop-64,behavior:'smooth'});
+  }
 }
-// Hero CTAs — switch tab then scroll
-function goTool(section){switchTab('tools');setTimeout(function(){go(section);},350);}
-function goSol(section){switchTab('solutions');setTimeout(function(){go(section);},350);}
-// Init: show overview tab
-switchTab('overview');
+// Hero CTAs — switch tab then scroll to section
+function goTool(section){switchTab('tools');setTimeout(function(){go(section);},400);}
+function goSol(section){switchTab('solutions');setTimeout(function(){go(section);},400);}
+// Init — activate first tab without scrolling
+switchTab('overview', true);
 
 </script>
 </body>
