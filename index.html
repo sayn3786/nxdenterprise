@@ -1048,22 +1048,27 @@
 <script>
 // ── TAB SWITCHING ──────────────────────────────────────────────────────
 function switchTab(id){
-  // Hide all panels, deactivate all nav tabs
+  // Deactivate all panels and nav links
   document.querySelectorAll('.tab-panel').forEach(function(p){p.classList.remove('active');});
   document.querySelectorAll('.nav-tab').forEach(function(a){a.classList.remove('active');});
-  // Show selected panel
+  // Activate selected panel
   var panel=document.getElementById('panel-'+id);
   if(panel){
     panel.classList.add('active');
+    // Reveal animated elements
     setTimeout(function(){
       panel.querySelectorAll('.fu').forEach(function(el){el.classList.add('vis');});
     },60);
+    // Scroll to first section inside the panel
+    var firstSection=panel.querySelector('section');
+    if(firstSection){
+      var top=firstSection.getBoundingClientRect().top+window.pageYOffset-80;
+      window.scrollTo({top:top,behavior:'smooth'});
+    }
   }
-  // Highlight selected nav tab
-  var navLink=document.querySelector('.nav-tab[data-tab="'+id+'"]');
-  if(navLink)navLink.classList.add('active');
-  // Scroll to top of content area
-  window.scrollTo({top:0,behavior:'smooth'});
+  // Highlight active nav link
+  var link=document.querySelector('.nav-tab[data-tab="'+id+'"]');
+  if(link)link.classList.add('active');
 }
 function goTool(section){switchTab('tools');setTimeout(function(){go(section);},400);}
 function goSol(section){switchTab('solutions');setTimeout(function(){go(section);},400);}
