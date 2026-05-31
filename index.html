@@ -15,6 +15,16 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <link rel="stylesheet" href="assets/css/style.css">
+<style>
+/* ── TAB PANELS ── */
+.tab-panel{display:none!important}
+.tab-panel.active{display:block!important}
+/* ── TAB NAV BUTTONS ── */
+.tab-btn{display:inline-flex;align-items:center;gap:7px;padding:16px 20px;font-size:.82rem;font-weight:600;color:rgba(255,255,255,.45);cursor:pointer;border:none;border-bottom:2px solid transparent;border-top:none;border-left:none;border-right:none;background:none;font-family:'Inter',sans-serif;white-space:nowrap;transition:color .2s,border-color .2s;letter-spacing:.01em}
+.tab-btn:hover{color:rgba(255,255,255,.85)}
+.tab-btn.active{color:#00C9A7;border-bottom-color:#00C9A7}
+.tab-btn i{font-size:.8rem}
+</style>
 <!-- EmailJS — demo booking emails -->
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script>emailjs.init({publicKey:'NBGCHzFjgYtKnH5YZ'});</script>
@@ -1042,18 +1052,6 @@
 </div>
 
 
-<style>
-/* ── TAB NAVIGATION ── */
-.tab-btn{display:inline-flex;align-items:center;gap:7px;padding:16px 20px;font-size:.82rem;font-weight:600;color:rgba(255,255,255,.45);cursor:pointer;border:none;border-bottom:2px solid transparent;background:none;font-family:'Inter',sans-serif;white-space:nowrap;transition:all .2s;letter-spacing:.01em}
-.tab-btn:hover{color:rgba(255,255,255,.85)}
-.tab-btn.active{color:var(--vivid);border-bottom-color:var(--vivid)}
-.tab-btn i{font-size:.8rem;opacity:.7}
-.tab-btn.active i{opacity:1}
-/* ── TAB PANELS ── */
-.tab-panel{display:none}
-.tab-panel.active{display:block;animation:tabFade .3s ease}
-@keyframes tabFade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
-</style>
 <script src="assets/js/app.js"></script>
 <script>
 
