@@ -1,8 +1,18 @@
 {
-  "updated": "03 Jun 2026, 10:58 UTC",
-  "count": 2,
+  "updated": "04 Jun 2026, 09:55 UTC",
+  "count": 3,
   "source_credit": "swift.com + industry feeds",
   "articles": [
+    {
+      "title": "72% of Consumers Pay for Instant Income Access",
+      "summary": "Instant payments are increasingly being judged less by how fast money moves and more by what faster access allows consumers to do. That is the central takeaway from “From Faster to Smarter: Real-Time ...",
+      "link": "https://www.pymnts.com/real-time-payments/2026/72percent-consumers-pay-for-instant-income-access/",
+      "source": "PYMNTS",
+      "color": "#0d2145",
+      "tag": "Instant Payments",
+      "published": "2026-06-04T08:00:17Z",
+      "display_date": "04 Jun 2026"
+    },
     {
       "title": "Arabica Coffee Prices Hit Record on U.S., Colombia Tariff Spat",
       "summary": "Arabica coffee prices hit a record level, as traders digested the withdrawal of President Trump’s threats to impose tariffs and economic sanctions on Colombia.",
