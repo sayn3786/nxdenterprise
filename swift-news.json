@@ -1,8 +1,18 @@
 {
-  "updated": "09 Jun 2026, 09:42 UTC",
-  "count": 2,
+  "updated": "10 Jun 2026, 09:58 UTC",
+  "count": 3,
   "source_credit": "swift.com + industry feeds",
   "articles": [
+    {
+      "title": "Nuvei-Payoneer Talks Come as SMBs Rethink Cross-Border Payments",
+      "summary": "As businesses demand greater visibility into settlement, foreign exchange, supplier payments and treasury operations, payment providers are making moves to expand beyond what might be termed their own...",
+      "link": "https://www.pymnts.com/news/cross-border-commerce/cross-border-payments/2026/nuvei-payoneer-talks-come-as-smbs-rethink-cross-border-payments/",
+      "source": "PYMNTS",
+      "color": "#0d2145",
+      "tag": "Payments",
+      "published": "2026-06-09T23:32:12Z",
+      "display_date": "09 Jun 2026"
+    },
     {
       "title": "Arabica Coffee Prices Hit Record on U.S., Colombia Tariff Spat",
       "summary": "Arabica coffee prices hit a record level, as traders digested the withdrawal of President Trump’s threats to impose tariffs and economic sanctions on Colombia.",
