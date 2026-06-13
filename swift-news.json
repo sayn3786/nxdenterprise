@@ -1,26 +1,16 @@
 {
-  "updated": "12 Jun 2026, 10:12 UTC",
-  "count": 4,
+  "updated": "13 Jun 2026, 08:57 UTC",
+  "count": 3,
   "source_credit": "swift.com + industry feeds",
   "articles": [
     {
-      "title": "FinTechs Use Cross-Border Payments to Court Small Businesses",
-      "summary": "Watch more: Need to Know With Mastercard’s Pratik Khowala There was a time when small businesses rarely sold outside their neighborhoods, much less their home state. That time is gone. Today’s Main St...",
-      "link": "https://www.pymnts.com/news/cross-border-commerce/cross-border-payments/2026/fintechs-use-cross-border-payments-to-court-small-businesses/",
+      "title": "3 Identity Trends Pushing KYC Beyond Compliance",
+      "summary": "Compliance executives have traditionally evaluated identity programs by asking whether they satisfied regulators and prevented fraud. But PYMNTS Intelligence research, done in collaboration with Truli...",
+      "link": "https://www.pymnts.com/identity/2026/3-identity-trends-pushing-kyc-beyond-compliance/",
       "source": "PYMNTS",
       "color": "#0d2145",
       "tag": "Payments",
-      "published": "2026-06-12T08:03:55Z",
-      "display_date": "12 Jun 2026"
-    },
-    {
-      "title": "From Access to Activation: Why Instant Payments Need More Than Connectivity",
-      "summary": "Instant payments in the United States have reached a new phase. Both the RTP® network and the FedNow® Service have pushed these payments further into the mainstream, giving more financial institutions...",
-      "link": "https://www.pymnts.com/tracker_posts/from-access-to-activation-why-instant-payments-need-more-than-connectivity/",
-      "source": "PYMNTS",
-      "color": "#0d2145",
-      "tag": "Instant Payments",
-      "published": "2026-06-12T08:00:19Z",
+      "published": "2026-06-12T20:45:22Z",
       "display_date": "12 Jun 2026"
     },
     {
