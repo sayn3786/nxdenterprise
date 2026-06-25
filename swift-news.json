@@ -1,8 +1,28 @@
 {
-  "updated": "24 Jun 2026, 09:28 UTC",
-  "count": 2,
+  "updated": "25 Jun 2026, 09:20 UTC",
+  "count": 4,
   "source_credit": "swift.com + industry feeds",
   "articles": [
+    {
+      "title": "The Real-Time Perception Gap: How Experience Is Driving the Next Phase of Instant Payments Adoption",
+      "summary": "Business-to-business (B2B) payments have long relied on familiar rails—credit cards, checks and automated clearing house (ACH) transfers—that move money between bank accounts over one to three days. T...",
+      "link": "https://www.pymnts.com/tracker_posts/the-real-time-perception-gap-how-experience-is-driving-the-next-phase-of-instant-payments-adoption/",
+      "source": "PYMNTS",
+      "color": "#0d2145",
+      "tag": "Instant Payments",
+      "published": "2026-06-25T08:00:16Z",
+      "display_date": "25 Jun 2026"
+    },
+    {
+      "title": "AI Forces Compliance Teams to Rethink Alert Strategy",
+      "summary": "Financial crime compliance programs are a game of alerts. Or at least they used to be in the pre-AI era, when compliance teams operated on a linear equation in which more transactions generated more a...",
+      "link": "https://www.pymnts.com/cybersecurity/fraud-prevention/2026/ai-forces-compliance-teams-to-rethink-alert-strategy/",
+      "source": "PYMNTS",
+      "color": "#0d2145",
+      "tag": "Payments",
+      "published": "2026-06-25T08:00:02Z",
+      "display_date": "25 Jun 2026"
+    },
     {
       "title": "Arabica Coffee Prices Hit Record on U.S., Colombia Tariff Spat",
       "summary": "Arabica coffee prices hit a record level, as traders digested the withdrawal of President Trump’s threats to impose tariffs and economic sanctions on Colombia.",
