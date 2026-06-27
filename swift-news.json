@@ -1,8 +1,18 @@
 {
-  "updated": "26 Jun 2026, 09:25 UTC",
-  "count": 2,
+  "updated": "27 Jun 2026, 08:35 UTC",
+  "count": 3,
   "source_credit": "swift.com + industry feeds",
   "articles": [
+    {
+      "title": "GigSafe Taps U.S. Bank to Deliver Instant Payments to Delivery Drivers",
+      "summary": "Companies using GigSafe’s compliance and payments platform built for regulated delivery and logistics operators can now make payments within the platform. This capability is enabled by GigSafe’s adopt...",
+      "link": "https://www.pymnts.com/real-time-payments/2026/gigsafe-taps-u-s-bank-to-deliver-instant-payments-to-delivery-drivers/",
+      "source": "PYMNTS",
+      "color": "#0d2145",
+      "tag": "Instant Payments",
+      "published": "2026-06-26T22:32:41Z",
+      "display_date": "26 Jun 2026"
+    },
     {
       "title": "Arabica Coffee Prices Hit Record on U.S., Colombia Tariff Spat",
       "summary": "Arabica coffee prices hit a record level, as traders digested the withdrawal of President Trump’s threats to impose tariffs and economic sanctions on Colombia.",
