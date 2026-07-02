@@ -1,8 +1,18 @@
 {
-  "updated": "01 Jul 2026, 09:43 UTC",
-  "count": 2,
+  "updated": "02 Jul 2026, 08:54 UTC",
+  "count": 3,
   "source_credit": "swift.com + industry feeds",
   "articles": [
+    {
+      "title": "Robinhood Launches Blockchain Designed for Real-World Assets",
+      "summary": "Robinhood Markets has launched the public mainnet of Robinhood Chain, a Layer 2 blockchain that the company said is purpose-built for real-world assets. Robinhood Chain is built using the Arbitrum Pla...",
+      "link": "https://www.pymnts.com/blockchain/2026/robinhood-launches-blockchain-designed-for-real-world-assets/",
+      "source": "PYMNTS",
+      "color": "#0d2145",
+      "tag": "CBDC / DLT",
+      "published": "2026-07-01T23:38:13Z",
+      "display_date": "01 Jul 2026"
+    },
     {
       "title": "Arabica Coffee Prices Hit Record on U.S., Colombia Tariff Spat",
       "summary": "Arabica coffee prices hit a record level, as traders digested the withdrawal of President Trump’s threats to impose tariffs and economic sanctions on Colombia.",
