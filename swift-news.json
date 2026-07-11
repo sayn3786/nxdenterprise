@@ -1,8 +1,18 @@
 {
-  "updated": "10 Jul 2026, 09:33 UTC",
-  "count": 2,
+  "updated": "11 Jul 2026, 07:54 UTC",
+  "count": 3,
   "source_credit": "swift.com + industry feeds",
   "articles": [
+    {
+      "title": "US CBDC Ban Set to Become Law at Midnight",
+      "summary": "A four-year ban on a U.S. central bank digital currency (CBDC) is set to take effect if a housing bill becomes law Saturday (July 11), CoinDesk reported Friday (July 10). The ban is included in the bi...",
+      "link": "https://www.pymnts.com/cbdc/2026/us-cbdc-ban-set-to-become-law-at-midnight/",
+      "source": "PYMNTS",
+      "color": "#0d2145",
+      "tag": "CBDC / DLT",
+      "published": "2026-07-10T23:15:27Z",
+      "display_date": "10 Jul 2026"
+    },
     {
       "title": "Arabica Coffee Prices Hit Record on U.S., Colombia Tariff Spat",
       "summary": "Arabica coffee prices hit a record level, as traders digested the withdrawal of President Trump’s threats to impose tariffs and economic sanctions on Colombia.",
