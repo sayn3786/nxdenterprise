@@ -1,8 +1,18 @@
 {
-  "updated": "21 Jul 2026, 08:26 UTC",
-  "count": 2,
+  "updated": "22 Jul 2026, 08:27 UTC",
+  "count": 3,
   "source_credit": "swift.com + industry feeds",
   "articles": [
+    {
+      "title": "36% of Global SMB Buyers Plan to Use FinTech Payment Providers",
+      "summary": "Small businesses are not abandoning banks for cross-border payments, but they are giving FinTechs a much larger share of the work. That shift stands out in “The Cross-Border Opportunity,” a PYMNTS Int...",
+      "link": "https://www.pymnts.com/smbs/2026/36percent-of-global-smb-buyers-plan-to-use-fintech-payment-providers/",
+      "source": "PYMNTS",
+      "color": "#0d2145",
+      "tag": "Payments",
+      "published": "2026-07-22T08:00:41Z",
+      "display_date": "22 Jul 2026"
+    },
     {
       "title": "Arabica Coffee Prices Hit Record on U.S., Colombia Tariff Spat",
       "summary": "Arabica coffee prices hit a record level, as traders digested the withdrawal of President Trump’s threats to impose tariffs and economic sanctions on Colombia.",
