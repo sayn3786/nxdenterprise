@@ -1,8 +1,18 @@
 {
-  "updated": "31 Jul 2026, 08:48 UTC",
-  "count": 2,
+  "updated": "01 Aug 2026, 08:19 UTC",
+  "count": 3,
   "source_credit": "swift.com + industry feeds",
   "articles": [
+    {
+      "title": "Project Agorá Cuts Cross-Border Payment Times to 80 Seconds",
+      "summary": "Real-value testing (RVT) of tokenization of wholesale cross-border payments demonstrated an average time from payment initiation to settlement of about 80 seconds, according to a report by the Bank fo...",
+      "link": "https://www.pymnts.com/news/cross-border-payments/2026/project-agora-cuts-cross-border-payment-times-80-seconds/",
+      "source": "PYMNTS",
+      "color": "#0d2145",
+      "tag": "Payments",
+      "published": "2026-07-31T21:53:23Z",
+      "display_date": "31 Jul 2026"
+    },
     {
       "title": "Arabica Coffee Prices Hit Record on U.S., Colombia Tariff Spat",
       "summary": "Arabica coffee prices hit a record level, as traders digested the withdrawal of President Trump’s threats to impose tariffs and economic sanctions on Colombia.",
