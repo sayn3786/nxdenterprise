@@ -1,8 +1,18 @@
 {
-  "updated": "10 Aug 2026, 07:38 UTC",
-  "count": 2,
+  "updated": "11 Aug 2026, 07:05 UTC",
+  "count": 3,
   "source_credit": "swift.com + industry feeds",
   "articles": [
+    {
+      "title": "Brazil Signals Surging Confidence in Plan to Export Pix Globally",
+      "summary": "Brazil’s central bank sounds more certain than in the past that it will link its instant payment system, Pix, to similar platforms in other countries, Reuters reported Monday (Aug. 10). The central ba...",
+      "link": "https://www.pymnts.com/news/payment-methods/2026/brazil-signals-surging-confidence-in-plan-to-export-pix-globally/",
+      "source": "PYMNTS",
+      "color": "#0d2145",
+      "tag": "Payments",
+      "published": "2026-08-10T20:30:16Z",
+      "display_date": "10 Aug 2026"
+    },
     {
       "title": "Arabica Coffee Prices Hit Record on U.S., Colombia Tariff Spat",
       "summary": "Arabica coffee prices hit a record level, as traders digested the withdrawal of President Trump’s threats to impose tariffs and economic sanctions on Colombia.",
