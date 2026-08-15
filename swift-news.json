@@ -1,27 +1,17 @@
 {
-  "updated": "14 Aug 2026, 07:22 UTC",
-  "count": 4,
+  "updated": "15 Aug 2026, 06:35 UTC",
+  "count": 3,
   "source_credit": "swift.com + industry feeds",
   "articles": [
     {
-      "title": "Figure’s Blockchain Marketplace Tops $1 Billion Weekly Loan Applications After Record Q2",
-      "summary": "Blockchain-native capital marketplace Figure Technology Solutions saw its Consumer Loan Marketplace volume leap 132% to $4.3 billion in the second quarter as both prospects and investors saw the benef...",
-      "link": "https://www.pymnts.com/earnings/2026/figures-blockchain-marketplace-tops-1-billion-weekly-loan-applications-after-record-q2/",
-      "source": "PYMNTS",
-      "color": "#0d2145",
-      "tag": "CBDC / DLT",
-      "published": "2026-08-14T01:18:08Z",
-      "display_date": "14 Aug 2026"
-    },
-    {
-      "title": "Chime Weighs Adding Stablecoin Wallet to Consumer Banking App",
-      "summary": "Chime Financial is considering adding stablecoins as a feature in its consumer banking app, Bloomberg reported Thursday (Aug. 13), citing unnamed sources. The FinTech asked blockchain technology compa...",
-      "link": "https://www.pymnts.com/blockchain/2026/chime-weighs-adding-stablecoin-wallet-to-consumer-banking-app/",
+      "title": "Banks Find the Big Money in FinCEN’s $4.9 Billion Smuggling Data",
+      "summary": "Financial institutions have spent years trying to see more suspicious activity. New data from the Financial Crimes Enforcement Network (FinCEN) suggests the more valuable question may be whether they ...",
+      "link": "https://www.pymnts.com/cybersecurity/2026/banks-find-big-money-fincen-5-billion-dollar-smuggling-data/",
       "source": "PYMNTS",
       "color": "#0d2145",
       "tag": "Payments",
-      "published": "2026-08-13T23:13:30Z",
-      "display_date": "13 Aug 2026"
+      "published": "2026-08-14T20:09:38Z",
+      "display_date": "14 Aug 2026"
     },
     {
       "title": "Arabica Coffee Prices Hit Record on U.S., Colombia Tariff Spat",
