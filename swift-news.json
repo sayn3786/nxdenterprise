@@ -1,17 +1,27 @@
 {
-  "updated": "18 Aug 2026, 06:40 UTC",
-  "count": 3,
+  "updated": "19 Aug 2026, 06:40 UTC",
+  "count": 4,
   "source_credit": "swift.com + industry feeds",
   "articles": [
     {
-      "title": "N3XT Unveils Tokenized Cross-Border Payments",
-      "summary": "Blockchain-powered bank N3XT has secured approval from Wyoming regulators to let customers use its digital token to transact with foreign counterparties, Bloomberg reported Monday (Aug. 17), citing it...",
-      "link": "https://www.pymnts.com/news/cross-border-payments/2026/n3xt-unveils-tokenized-cross-border-payments/",
+      "title": "SEC Proposes Rules to Streamline Capital Formation for Digital Asset Entrepreneurs",
+      "summary": "The Securities and Exchange Commission (SEC) proposed new rules that it said in a Tuesday (Aug. 18) press release would create a clear framework for certain investment contracts involving crypto asset...",
+      "link": "https://www.pymnts.com/cryptocurrency/2026/sec-proposes-rules-to-streamline-capital-formation-for-digital-asset-entrepreneurs/",
+      "source": "PYMNTS",
+      "color": "#0d2145",
+      "tag": "AML",
+      "published": "2026-08-19T00:47:37Z",
+      "display_date": "19 Aug 2026"
+    },
+    {
+      "title": "Currency Just Became Treasury’s Newest Superpower",
+      "summary": "A global business shouldn’t have to choose between local checkout for its customers and manageable treasury for its chief financial officer. For years, the cross-border payments industry has worked to...",
+      "link": "https://www.pymnts.com/news/cross-border-payments/2026/currency-just-became-treasury-newest-superpower/",
       "source": "PYMNTS",
       "color": "#0d2145",
       "tag": "Payments",
-      "published": "2026-08-17T20:44:13Z",
-      "display_date": "17 Aug 2026"
+      "published": "2026-08-18T21:06:26Z",
+      "display_date": "18 Aug 2026"
     },
     {
       "title": "Arabica Coffee Prices Hit Record on U.S., Colombia Tariff Spat",
