@@ -1,8 +1,18 @@
 {
-  "updated": "21 Aug 2026, 06:43 UTC",
-  "count": 2,
+  "updated": "22 Aug 2026, 06:37 UTC",
+  "count": 3,
   "source_credit": "swift.com + industry feeds",
   "articles": [
+    {
+      "title": "Standard Chartered and HSBC Complete First Interbank Transaction on Swift’s Blockchain-Based Ledger",
+      "summary": "Standard Chartered and HSBC have completed the first interbank transaction executed on Swift’s blockchain-based ledger, Standard Chartered said in a Wednesday (Aug. 19) press release. This live cross-...",
+      "link": "https://www.pymnts.com/blockchain/2026/standard-chartered-and-hsbc-complete-first-interbank-transaction-on-swifts-blockchain-based-ledger/",
+      "source": "PYMNTS",
+      "color": "#0d2145",
+      "tag": "CBDC / DLT",
+      "published": "2026-08-21T23:42:50Z",
+      "display_date": "21 Aug 2026"
+    },
     {
       "title": "Arabica Coffee Prices Hit Record on U.S., Colombia Tariff Spat",
       "summary": "Arabica coffee prices hit a record level, as traders digested the withdrawal of President Trump’s threats to impose tariffs and economic sanctions on Colombia.",
