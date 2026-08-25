@@ -1,8 +1,18 @@
 {
-  "updated": "24 Aug 2026, 06:55 UTC",
-  "count": 2,
+  "updated": "25 Aug 2026, 06:43 UTC",
+  "count": 3,
   "source_credit": "swift.com + industry feeds",
   "articles": [
+    {
+      "title": "Stablecoin KYC Debate Moves to Exchanges and Wallets",
+      "summary": "A stablecoin may pass through several wallets and intermediaries before someone tries to turn it back into dollars. Federal regulators now have to decide which of those relationships requires someone ...",
+      "link": "https://www.pymnts.com/cryptocurrency/2026/stablecoin-kyc-debate-moves-to-exchanges-and-wallets/",
+      "source": "PYMNTS",
+      "color": "#0d2145",
+      "tag": "Payments",
+      "published": "2026-08-24T20:03:27Z",
+      "display_date": "24 Aug 2026"
+    },
     {
       "title": "Arabica Coffee Prices Hit Record on U.S., Colombia Tariff Spat",
       "summary": "Arabica coffee prices hit a record level, as traders digested the withdrawal of President Trump’s threats to impose tariffs and economic sanctions on Colombia.",
