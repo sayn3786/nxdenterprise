@@ -1,17 +1,27 @@
 {
-  "updated": "30 Aug 2026, 11:18 UTC",
-  "count": 3,
+  "updated": "31 Aug 2026, 12:47 UTC",
+  "count": 4,
   "source_credit": "swift.com + industry feeds",
   "articles": [
     {
-      "title": "This Week in Stablecoins: Interoperability vs Competing Interests",
-      "summary": "Interoperability is what the financial space has touted as a prerequisite for stablecoins to reach commercial scale. But, at the same time, the banks, card networks, stablecoin issuers, blockchain ope...",
-      "link": "https://www.pymnts.com/cryptocurrency/2026/this-week-in-stablecoins-interoperability-vs-competing-interests/",
+      "title": "Bank of America Says APAC Redefines Cross-Border Money Movement",
+      "summary": "Watch more: Need to Know With Bank of America’s Narendra Kumar Parhi Cross-border payments in Asia-Pacific are being pulled toward the speed of the region’s domestic commerce, leaving companies in the...",
+      "link": "https://www.pymnts.com/news/cross-border-payments/2026/bank-of-america-says-apac-redefines-cross-border-money-movement/",
       "source": "PYMNTS",
       "color": "#0d2145",
       "tag": "Payments",
-      "published": "2026-08-28T20:48:38Z",
-      "display_date": "28 Aug 2026"
+      "published": "2026-08-31T08:02:49Z",
+      "display_date": "31 Aug 2026"
+    },
+    {
+      "title": "Nium Debuts USDC Funding for Client Payouts",
+      "summary": "Cross-border payments company Nium has debuted a stablecoin-focused funding program. USDC funding lets businesses finance their Nium accounts with the USDC stablecoin and pay out in fiat, thus extendi...",
+      "link": "https://www.pymnts.com/cryptocurrency/2026/nium-debuts-usdc-funding-for-client-payouts/",
+      "source": "PYMNTS",
+      "color": "#0d2145",
+      "tag": "Payments",
+      "published": "2026-08-30T23:03:36Z",
+      "display_date": "30 Aug 2026"
     },
     {
       "title": "Arabica Coffee Prices Hit Record on U.S., Colombia Tariff Spat",
