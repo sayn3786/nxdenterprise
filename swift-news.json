@@ -1,28 +1,8 @@
 {
-  "updated": "02 Sep 2026, 10:41 UTC",
-  "count": 4,
+  "updated": "03 Sep 2026, 10:43 UTC",
+  "count": 2,
   "source_credit": "swift.com + industry feeds",
   "articles": [
-    {
-      "title": "Interoperability Now Drives Asia-Pacific’s Real-Time Payments Agenda",
-      "summary": "Real-time payments in Asia-Pacific are entering a new phase. After years of building domestic instant payment rails, countries across the region are now connecting those systems across borders, expand...",
-      "link": "https://www.pymnts.com/real-time-payments/2026/interoperability-now-drives-asia-pacifics-real-time-payments-agenda/",
-      "source": "PYMNTS",
-      "color": "#0d2145",
-      "tag": "Instant Payments",
-      "published": "2026-09-02T08:03:14Z",
-      "display_date": "02 Sep 2026"
-    },
-    {
-      "title": "Incore Bank’s AI Hits 99% Accuracy on KYC Checks",
-      "summary": "Know-your-customer (KYC) checks are expensive partly because a bank isn’t simply verifying an identity. Compliance teams have to collect information from documents, reconcile it across systems, invest...",
-      "link": "https://www.pymnts.com/news/artificial-intelligence/2026/incore-banks-ai-hits-99-accuracy-on-kyc-checks/",
-      "source": "PYMNTS",
-      "color": "#0d2145",
-      "tag": "Payments",
-      "published": "2026-09-01T23:56:06Z",
-      "display_date": "01 Sep 2026"
-    },
     {
       "title": "Arabica Coffee Prices Hit Record on U.S., Colombia Tariff Spat",
       "summary": "Arabica coffee prices hit a record level, as traders digested the withdrawal of President Trump’s threats to impose tariffs and economic sanctions on Colombia.",
