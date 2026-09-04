@@ -1,8 +1,38 @@
 {
-  "updated": "03 Sep 2026, 10:43 UTC",
-  "count": 2,
+  "updated": "04 Sep 2026, 10:39 UTC",
+  "count": 5,
   "source_credit": "swift.com + industry feeds",
   "articles": [
+    {
+      "title": "Bottomline Taps Chainlink to Bring 600 Banks On-Chain",
+      "summary": "Bottomline, a top-three provider of Swift services, has partnered with Chainlink to give more than 600 bank customers access to blockchain-based cross-border settlement. The deal is one of the largest...",
+      "link": "https://www.pymnts.com/blockchain/2026/bottomline-partners-with-chainlink-to-connect-600-banks-to-blockchain-settlement/",
+      "source": "PYMNTS",
+      "color": "#0d2145",
+      "tag": "Payments",
+      "published": "2026-09-04T01:45:49Z",
+      "display_date": "04 Sep 2026"
+    },
+    {
+      "title": "The 4 New Working-Capital Levers CFOs Can Pull in Real Time",
+      "summary": "The next generation of payment infrastructure is giving CFOs something more valuable than speed. It’s giving them optionality. Real-time rails, richer ISO 20022 data, virtual accounts, embedded FX and...",
+      "link": "https://www.pymnts.com/back-office/cfo/2026/the-4-new-working-capital-levers-cfos-can-pull-in-real-time/",
+      "source": "PYMNTS",
+      "color": "#0d2145",
+      "tag": "Payments",
+      "published": "2026-09-04T00:57:07Z",
+      "display_date": "04 Sep 2026"
+    },
+    {
+      "title": "Memecoin App Pons Drives Record Fees on Robinhood’s New Blockchain",
+      "summary": "A third-party token-creation application has emerged as one of the digital asset industry’s largest fee generators, driven by active retail trading on Robinhood Markets’ newly launched blockchain netw...",
+      "link": "https://www.pymnts.com/blockchain/2026/memecoin-app-pons-drives-record-fees-on-robinhoods-new-blockchain/",
+      "source": "PYMNTS",
+      "color": "#0d2145",
+      "tag": "CBDC / DLT",
+      "published": "2026-09-04T00:37:13Z",
+      "display_date": "04 Sep 2026"
+    },
     {
       "title": "Arabica Coffee Prices Hit Record on U.S., Colombia Tariff Spat",
       "summary": "Arabica coffee prices hit a record level, as traders digested the withdrawal of President Trump’s threats to impose tariffs and economic sanctions on Colombia.",
