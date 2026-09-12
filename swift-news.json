@@ -1,8 +1,18 @@
 {
-  "updated": "11 Sep 2026, 10:40 UTC",
-  "count": 2,
+  "updated": "12 Sep 2026, 10:09 UTC",
+  "count": 3,
   "source_credit": "swift.com + industry feeds",
   "articles": [
+    {
+      "title": "European Financial Groups Warn EU Caps Will Stifle Tokenized Assets",
+      "summary": "The Association for the Development of Digital Assets (ADAN) and 27 partners across Europe are calling on European Union policymakers to authorize higher transaction volumes under the DLT Pilot Regime...",
+      "link": "https://www.pymnts.com/cryptocurrency/2026/european-financial-groups-warn-eu-caps-will-stifle-tokenized-assets/",
+      "source": "PYMNTS",
+      "color": "#0d2145",
+      "tag": "Payments",
+      "published": "2026-09-11T19:58:34Z",
+      "display_date": "11 Sep 2026"
+    },
     {
       "title": "Arabica Coffee Prices Hit Record on U.S., Colombia Tariff Spat",
       "summary": "Arabica coffee prices hit a record level, as traders digested the withdrawal of President Trump’s threats to impose tariffs and economic sanctions on Colombia.",
