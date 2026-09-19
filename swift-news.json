@@ -1,18 +1,8 @@
 {
-  "updated": "18 Sep 2026, 10:37 UTC",
-  "count": 3,
+  "updated": "19 Sep 2026, 10:21 UTC",
+  "count": 2,
   "source_credit": "swift.com + industry feeds",
   "articles": [
-    {
-      "title": "CFOs Spent Years Adding to the Payments Stack. Now They May Need to Tear It Apart.",
-      "summary": "CFOs have typically solved payments problems by buying more payments technology. A new rail for faster settlement, another provider for cross-border payments. Fraud software, treasury platforms, AP au...",
-      "link": "https://www.pymnts.com/news/payment-methods/2026/cfos-spent-years-adding-to-the-payments-stack-now-they-may-need-to-tear-it-apart/",
-      "source": "PYMNTS",
-      "color": "#0d2145",
-      "tag": "Payments",
-      "published": "2026-09-17T22:42:09Z",
-      "display_date": "17 Sep 2026"
-    },
     {
       "title": "Arabica Coffee Prices Hit Record on U.S., Colombia Tariff Spat",
       "summary": "Arabica coffee prices hit a record level, as traders digested the withdrawal of President Trump’s threats to impose tariffs and economic sanctions on Colombia.",
