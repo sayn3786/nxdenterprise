@@ -1,8 +1,18 @@
 {
-  "updated": "23 Sep 2026, 10:49 UTC",
-  "count": 2,
+  "updated": "24 Sep 2026, 11:09 UTC",
+  "count": 3,
   "source_credit": "swift.com + industry feeds",
   "articles": [
+    {
+      "title": "Small Businesses Create Big Openings for Cross-Border Payments",
+      "summary": "Small businesses could give credit unions their next opening for growth, with demand for artificial intelligence financial tools running ahead of consumer interest. The PYMNTS Intelligence report “The...",
+      "link": "https://www.pymnts.com/smbs/2026/small-businesses-create-big-openings-for-cross-border-payments/",
+      "source": "PYMNTS",
+      "color": "#0d2145",
+      "tag": "Payments",
+      "published": "2026-09-24T08:00:39Z",
+      "display_date": "24 Sep 2026"
+    },
     {
       "title": "Arabica Coffee Prices Hit Record on U.S., Colombia Tariff Spat",
       "summary": "Arabica coffee prices hit a record level, as traders digested the withdrawal of President Trump’s threats to impose tariffs and economic sanctions on Colombia.",
