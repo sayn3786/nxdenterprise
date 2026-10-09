@@ -1,8 +1,18 @@
 {
-  "updated": "08 Oct 2026, 12:51 UTC",
-  "count": 2,
+  "updated": "09 Oct 2026, 12:37 UTC",
+  "count": 3,
   "source_credit": "swift.com + industry feeds",
   "articles": [
+    {
+      "title": "OCC and Fed Fine American Express $350 Million Over AML Deficiencies",
+      "summary": "American Express takes its responsibility to fight financial crime seriously and is committed to addressing concerns outlined by banking regulators, Chairman and CEO Stephen J. Squeri said in a statem...",
+      "link": "https://www.pymnts.com/legal/aml/2026/occ-and-fed-fine-american-express-350-million-over-aml-deficiencies/",
+      "source": "PYMNTS",
+      "color": "#0d2145",
+      "tag": "AML",
+      "published": "2026-10-09T02:52:02Z",
+      "display_date": "09 Oct 2026"
+    },
     {
       "title": "Arabica Coffee Prices Hit Record on U.S., Colombia Tariff Spat",
       "summary": "Arabica coffee prices hit a record level, as traders digested the withdrawal of President Trump’s threats to impose tariffs and economic sanctions on Colombia.",
