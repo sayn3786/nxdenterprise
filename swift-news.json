@@ -1,8 +1,18 @@
 {
-  "updated": "21 Oct 2026, 11:13 UTC",
-  "count": 2,
+  "updated": "22 Oct 2026, 11:11 UTC",
+  "count": 3,
   "source_credit": "swift.com + industry feeds",
   "articles": [
+    {
+      "title": "Instant Payments May Give Credit Unions a Deposit Growth Advantage",
+      "summary": "Banks have generally measured instant payments by transactions: how many customers use them, how much money moves and how quickly payments arrive. An example from Amplify Credit Union adds another mea...",
+      "link": "https://www.pymnts.com/real-time-payments/2026/instant-payments-may-give-credit-unions-a-deposit-growth-advantage/",
+      "source": "PYMNTS",
+      "color": "#0d2145",
+      "tag": "Instant Payments",
+      "published": "2026-10-22T08:00:08Z",
+      "display_date": "22 Oct 2026"
+    },
     {
       "title": "Arabica Coffee Prices Hit Record on U.S., Colombia Tariff Spat",
       "summary": "Arabica coffee prices hit a record level, as traders digested the withdrawal of President Trump’s threats to impose tariffs and economic sanctions on Colombia.",
