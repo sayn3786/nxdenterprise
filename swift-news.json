@@ -1,8 +1,18 @@
 {
-  "updated": "23 Oct 2026, 11:03 UTC",
-  "count": 2,
+  "updated": "24 Oct 2026, 10:19 UTC",
+  "count": 3,
   "source_credit": "swift.com + industry feeds",
   "articles": [
+    {
+      "title": "LianLian Taps PayPal and Venmo to Speed Up Cross-Border Payouts",
+      "summary": "Cross-border payments firm LianLian Global’s social commerce, marketplace and eCommerce clients can now send payouts to PayPal accounts globally and Venmo accounts in the United States, the company sa...",
+      "link": "https://www.pymnts.com/news/cross-border-payments/2026/lianlian-taps-paypal-venmo-speed-up-cross-border-payouts/",
+      "source": "PYMNTS",
+      "color": "#0d2145",
+      "tag": "Payments",
+      "published": "2026-10-23T21:44:07Z",
+      "display_date": "23 Oct 2026"
+    },
     {
       "title": "Arabica Coffee Prices Hit Record on U.S., Colombia Tariff Spat",
       "summary": "Arabica coffee prices hit a record level, as traders digested the withdrawal of President Trump’s threats to impose tariffs and economic sanctions on Colombia.",
