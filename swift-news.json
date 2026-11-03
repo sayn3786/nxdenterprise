@@ -1,8 +1,18 @@
 {
-  "updated": "02 Nov 2026, 14:49 UTC",
-  "count": 2,
+  "updated": "03 Nov 2026, 13:40 UTC",
+  "count": 3,
   "source_credit": "swift.com + industry feeds",
   "articles": [
+    {
+      "title": "AI Agents Could Control 5% of Cross-Border Payments. Who Controls Them?",
+      "summary": "Watch more: Need to Know With Mural’s Sinclair Toffa As stablecoins, real-time payment networks and artificial intelligence converge, financial infrastructure providers are confronting the fact that c...",
+      "link": "https://www.pymnts.com/news/payments-innovation/2026/ai-agents-could-control-5percent-of-cross-border-payments-who-controls-them/",
+      "source": "PYMNTS",
+      "color": "#0d2145",
+      "tag": "Payments",
+      "published": "2026-11-03T09:03:22Z",
+      "display_date": "03 Nov 2026"
+    },
     {
       "title": "Arabica Coffee Prices Hit Record on U.S., Colombia Tariff Spat",
       "summary": "Arabica coffee prices hit a record level, as traders digested the withdrawal of President Trump’s threats to impose tariffs and economic sanctions on Colombia.",
