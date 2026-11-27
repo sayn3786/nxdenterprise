@@ -1,18 +1,8 @@
 {
-  "updated": "26 Nov 2026, 16:26 UTC",
-  "count": 3,
+  "updated": "27 Nov 2026, 16:11 UTC",
+  "count": 2,
   "source_credit": "swift.com + industry feeds",
   "articles": [
-    {
-      "title": "FinCEN Extends Reporting Deadlines Amid Cyber-Related Service Disruption",
-      "summary": "The Financial Crimes Enforcement Network (FinCEN) is giving financial institutions, companies and individuals more time to meet some reporting obligations due to a service disruption that is preventin...",
-      "link": "https://www.pymnts.com/cybersecurity/2026/fincen-extends-reporting-deadlines-amid-cyber-related-service-disruption/",
-      "source": "PYMNTS",
-      "color": "#0d2145",
-      "tag": "SWIFT CSP",
-      "published": "2026-11-25T23:51:23Z",
-      "display_date": "25 Nov 2026"
-    },
     {
       "title": "Arabica Coffee Prices Hit Record on U.S., Colombia Tariff Spat",
       "summary": "Arabica coffee prices hit a record level, as traders digested the withdrawal of President Trump’s threats to impose tariffs and economic sanctions on Colombia.",
